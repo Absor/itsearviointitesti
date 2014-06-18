@@ -144,27 +144,6 @@ module.exports = function (grunt) {
                 },
                 src: 'index.html',
                 dest: 'dist/index.html'
-            },
-            your_target: {
-                options: {
-                    prefix: {selector:'link',attribute:'href',value:'../'},
-                    callback: function($){
-                        $('script').each(function(index, element) {
-                            var jqElement = $(element);
-                            var src = jqElement.attr('src');
-                            if (src.indexOf('http') === 0) {
-                                return;
-                            }
-                            if (src.indexOf('bower_components') === 0) {
-                                jqElement.attr('src', '../'+src);
-                            } else {
-                                jqElement.attr('src', 'instrumented/'+src);
-                            }
-                        });
-                    }
-                },
-                src: 'index.html',
-                dest: 'instrumented/index.html'
             }
         },
         cssmin: {
@@ -236,6 +215,20 @@ module.exports = function (grunt) {
             },
             during_watch: {
                 browsers: ['PhantomJS']
+            },
+            coverage: {
+                options: {
+                    frameworks: ['jasmine'],
+                    files: [  //this files data is also updated in the watch handler, if updated change there too
+                        'bower_components/angular-mocks/angular-mocks.js',
+                        createFolderGlobs('*.js')
+                    ],
+                    reporters: ['mocha', 'coverage'],
+                    coverageReporter: {
+                        type : 'html',
+                        dir : 'coverage/'
+                    }
+                }
             }
         },
         protractor_webdriver: {
@@ -244,7 +237,7 @@ module.exports = function (grunt) {
         },
         protractor_coverage: {
             options: {
-                configFile: 'protractor-travis.conf.js',
+                configFile: 'protractor-local.conf.js',
                 keepAlive: false,
                 coverageDir: 'coverage',
                 args: {
@@ -292,7 +285,7 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', ['dom_munger:read', 'jshint', 'connect:main', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests']);
     grunt.registerTask('test-local-e2e', ['connect:test', 'protractor_webdriver', 'protractor']);
-    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'copy:test', 'connect:instrumented', 'protractor_coverage', 'makeReport', 'coveralls']);
+    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'copy:test', 'connect:instrumented', 'protractor_webdriver', 'protractor_coverage', 'makeReport', 'coveralls']);
 
     grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156
