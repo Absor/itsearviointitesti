@@ -7,7 +7,7 @@ env:
   - secure: gQ+8xHs/46sAQ7ixCwbr4Oydbuhb2t03+OR7nve2ZUGgAe8G8GwhAP51HeDNOMPDNbIRtzgPOtp/XSg/bSN3wf8QDhTzl/EYQ8HxQIGw3QDvQjMpxdD9zBhBkzkhrL7pq+7MD7/e4LfLY+YUvdxGNJrSMGrRONcCaX9qOqmX/LU=
 before_install:
   - npm install -g grunt-cli
-after_install:
+before_script:
   - bower install
 addons:
   sauce_connect: true
