@@ -34,6 +34,6 @@
     "protractor": "^0.24.1"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test-travis"
   }
 }

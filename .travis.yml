@@ -6,6 +6,6 @@ env:
   - secure: tBkPK9NjGzA8ck16Hjy3oLQCEoDFls3pYqB/r/989zoxfow17DxeZ9zaXjgm/FJitxazQYlJyb52nvbwT2DSNDn7Wud/vPa92mNu6Fjf1792yzYFF+YNyQ7iNRghIw5fgws1On7gx/o1OTfqgioh6/s62OBuXRXZnEexqCwxZmE=
   - secure: gQ+8xHs/46sAQ7ixCwbr4Oydbuhb2t03+OR7nve2ZUGgAe8G8GwhAP51HeDNOMPDNbIRtzgPOtp/XSg/bSN3wf8QDhTzl/EYQ8HxQIGw3QDvQjMpxdD9zBhBkzkhrL7pq+7MD7/e4LfLY+YUvdxGNJrSMGrRONcCaX9qOqmX/LU=
 after_install:
-- bower install
+  - bower install
 addons:
   sauce_connect: true
