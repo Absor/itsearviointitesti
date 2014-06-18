@@ -4,5 +4,8 @@ bower_components/
 
 build/
 dist/
+temp/
+coverage/
+instrumented/
 
 .idea

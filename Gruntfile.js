@@ -10,7 +10,7 @@ var pkg = require('./package.json');
 //This enables users to create any directory structure they desire.
 var createFolderGlobs = function (fileTypePatterns) {
     fileTypePatterns = Array.isArray(fileTypePatterns) ? fileTypePatterns : [fileTypePatterns];
-    var ignore = ['node_modules', 'bower_components', 'dist', 'temp'];
+    var ignore = ['node_modules', 'bower_components', 'dist', 'temp', 'instrumented'];
     var fs = require('fs');
     return fs.readdirSync(process.cwd())
         .map(function (file) {
@@ -29,6 +29,11 @@ var createFolderGlobs = function (fileTypePatterns) {
         .concat(fileTypePatterns);
 };
 
+var mountFolder = function (connect, dir) {
+    return connect.static(require('path').resolve(dir));
+};
+
+
 module.exports = function (grunt) {
 
     // load all grunt tasks
@@ -45,6 +50,12 @@ module.exports = function (grunt) {
             test: {
                 options: {
                     port: 9002
+                }
+            },
+            instrumented: {
+                options: {
+                    port: 9002,
+                    base: 'instrumented'
                 }
             }
         },
@@ -73,6 +84,9 @@ module.exports = function (grunt) {
             },
             after: {
                 src: ['temp']
+            },
+            test: {
+                src: ['instrumented', 'coverage']
             }
         },
         less: {
@@ -103,6 +117,11 @@ module.exports = function (grunt) {
                     //{src: ['bower_components/select2/*.png','bower_components/select2/*.gif'], dest:'dist/css/',flatten:true,expand:true},
                     //{src: ['bower_components/angular-mocks/angular-mocks.js'], dest: 'dist/'}
                 ]
+            },
+            test: {
+                files: [
+                    {src: ['bower_components/**', '**/*.less', '**/*.html'], dest: 'instrumented/'}
+                ]
             }
         },
         dom_munger: {
@@ -125,6 +144,27 @@ module.exports = function (grunt) {
                 },
                 src: 'index.html',
                 dest: 'dist/index.html'
+            },
+            your_target: {
+                options: {
+                    prefix: {selector:'link',attribute:'href',value:'../'},
+                    callback: function($){
+                        $('script').each(function(index, element) {
+                            var jqElement = $(element);
+                            var src = jqElement.attr('src');
+                            if (src.indexOf('http') === 0) {
+                                return;
+                            }
+                            if (src.indexOf('bower_components') === 0) {
+                                jqElement.attr('src', '../'+src);
+                            } else {
+                                jqElement.attr('src', 'instrumented/'+src);
+                            }
+                        });
+                    }
+                },
+                src: 'index.html',
+                dest: 'instrumented/index.html'
             }
         },
         cssmin: {
@@ -202,14 +242,46 @@ module.exports = function (grunt) {
             main: {
             }
         },
-        protractor: {
+        protractor_coverage: {
             options: {
-                configFile: 'protractor.conf.js',
+                configFile: 'protractor-travis.conf.js',
+                coverageDir: 'coverage',
                 args: {
                     specs: ['test-e2e/*.js']
                 }
             },
             main: {
+            }
+        },
+        protractor: {
+            options: {
+                configFile: 'protractor-local.conf.js',
+                args: {
+                    specs: ['test-e2e/*.js']
+                }
+            },
+            main: {
+            }
+        },
+        instrument: {
+            files: [createFolderGlobs('*.js'), '!protractor*.js', '!Gruntfile.js'],
+            options: {
+                lazy: true,
+                basePath: "instrumented"
+            }
+        },
+        makeReport: {
+            src: 'coverage/*.json',
+            options: {
+                type: 'lcov',
+                dir: 'coverage/reports',
+                print: 'detail'
+            }
+        },
+        coveralls: {
+            options: {
+                src: 'coverage/reports/lcov.info',
+                force: false
             }
         }
     });
@@ -217,7 +289,8 @@ module.exports = function (grunt) {
     grunt.registerTask('build', ['jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngmin', 'uglify', 'copy', 'htmlmin', 'imagemin', 'clean:after']);
     grunt.registerTask('serve', ['dom_munger:read', 'jshint', 'connect:main', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests']);
-    grunt.registerTask('test-e2e', ['dom_munger:read', 'connect:test', 'protractor_webdriver', 'protractor']);
+    grunt.registerTask('test-e2e', ['connect:test', 'protractor_webdriver', 'protractor']);
+    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'copy:test', 'connect:instrumented', 'protractor_webdriver', 'protractor_coverage', 'makeReport']);
 
     grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156
