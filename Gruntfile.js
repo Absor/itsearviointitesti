@@ -245,6 +245,7 @@ module.exports = function (grunt) {
         protractor_coverage: {
             options: {
                 configFile: 'protractor-travis.conf.js',
+                keepAlive: false,
                 coverageDir: 'coverage',
                 args: {
                     specs: ['test-e2e/*.js']
@@ -256,6 +257,7 @@ module.exports = function (grunt) {
         protractor: {
             options: {
                 configFile: 'protractor-local.conf.js',
+                keepAlive: false,
                 args: {
                     specs: ['test-e2e/*.js']
                 }
@@ -290,7 +292,7 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', ['dom_munger:read', 'jshint', 'connect:main', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests']);
     grunt.registerTask('test-local-e2e', ['connect:test', 'protractor_webdriver', 'protractor']);
-    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'copy:test', 'connect:instrumented', 'protractor_coverage', 'makeReport']);
+    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'copy:test', 'connect:instrumented', 'protractor_coverage', 'makeReport', 'coveralls']);
 
     grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156
