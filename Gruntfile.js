@@ -10,7 +10,7 @@ var pkg = require('./package.json');
 //This enables users to create any directory structure they desire.
 var createFolderGlobs = function (fileTypePatterns) {
     fileTypePatterns = Array.isArray(fileTypePatterns) ? fileTypePatterns : [fileTypePatterns];
-    var ignore = ['node_modules', 'bower_components', 'dist', 'temp', 'instrumented'];
+    var ignore = ['node_modules', 'bower_components', 'dist', 'temp', 'instrumented', 'coverage'];
     var fs = require('fs');
     return fs.readdirSync(process.cwd())
         .map(function (file) {
@@ -226,11 +226,21 @@ module.exports = function (grunt) {
                 browsers: ['PhantomJS']
             },
             coverage: {
+                options: {
+                    files: [
+                        '<%= dom_munger.data.appjs %>',
+                        'bower_components/angular-mocks/angular-mocks.js',
+                        createFolderGlobs('instrumented/**/*-spec.js')
+                    ]
+                },
                 reporters: ['mocha', 'coverage'],
+                preprocessors: {
+                    'src/*.js': ['coverage']
+                },
+                browsers: ['PhantomJS'],
                 coverageReporter: {
                     type : 'lcovonly',
-                    dir : 'coverage/',
-                    print: 'detail'
+                    dir : 'coverage/'
                 }
             }
         },
@@ -272,14 +282,13 @@ module.exports = function (grunt) {
             src: 'coverage/*.json',
             options: {
                 type: 'lcovonly',
-                dir: 'coverage',
-                print: 'detail'
+                dir: 'coverage'
             }
         },
         coveralls: {
             main: {
                 force: false,
-                src: ['coverage/lcov.info']
+                src: ['coverage/**/*.info']
             }
         }
     });
@@ -288,7 +297,7 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', ['dom_munger:read', 'jshint', 'connect:main', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests']);
     grunt.registerTask('test-local-e2e', ['connect:test', 'protractor_webdriver', 'protractor']);
-    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'copy:test', 'connect:instrumented', 'protractor_webdriver', 'protractor_coverage', 'makeReport', 'coveralls']);
+    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'copy:test', 'connect:instrumented', 'protractor_webdriver', 'protractor_coverage', 'dom_munger:read_instrumented', 'karma:coverage', 'makeReport', 'coveralls']);
 
     grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156
