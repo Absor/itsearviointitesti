@@ -33,7 +33,6 @@ var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 
-
 module.exports = function (grunt) {
 
     // load all grunt tasks
@@ -134,14 +133,13 @@ module.exports = function (grunt) {
                 },
                 src: 'index.html'
             },
-            read_instrumented: {
+            read_libraries: {
                 options: {
                     read: [
-                        {selector: 'script[data-concat!="false"]', attribute: 'src', writeto: 'appjs'},
-                        {selector: 'link[rel="stylesheet"][data-concat!="false"]', attribute: 'href', writeto: 'appcss'}
+                        {selector: 'script[data-lib="true"]', attribute: 'src', writeto: 'appjslib'}
                     ]
                 },
-                src: 'instrumented/index.html'
+                src: 'index.html'
             },
             update: {
                 options: {
@@ -228,15 +226,14 @@ module.exports = function (grunt) {
             coverage: {
                 options: {
                     files: [
-                        '<%= dom_munger.data.appjs %>',
+                        '<%= dom_munger.data.appjslib %>',
                         'bower_components/angular-mocks/angular-mocks.js',
-                        createFolderGlobs('instrumented/**/*-spec.js')
+                        'instrumented/**/*.js',
+                        createFolderGlobs('*-spec.js')
                     ]
                 },
                 reporters: ['mocha', 'coverage'],
-                preprocessors: {
-                    'src/*.js': ['coverage']
-                },
+
                 browsers: ['PhantomJS'],
                 coverageReporter: {
                     type : 'lcovonly',
@@ -272,7 +269,7 @@ module.exports = function (grunt) {
             }
         },
         instrument: {
-            files: [createFolderGlobs('*.js'), '!protractor*.js', '!Gruntfile.js'],
+            files: [createFolderGlobs('*.js'), '!protractor*.js', '!Gruntfile.js', '!test-e2e/*', '!**/*-spec.js'],
             options: {
                 lazy: true,
                 basePath: "instrumented"
@@ -297,7 +294,7 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', ['dom_munger:read', 'jshint', 'connect:main', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests']);
     grunt.registerTask('test-local-e2e', ['connect:test', 'protractor_webdriver', 'protractor']);
-    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'copy:test', 'connect:instrumented', 'protractor_webdriver', 'protractor_coverage', 'dom_munger:read_instrumented', 'karma:coverage', 'makeReport', 'coveralls']);
+    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'dom_munger:read_libraries', 'karma:coverage', 'copy:test', 'connect:instrumented', 'protractor_webdriver', 'protractor_coverage', 'makeReport', 'coveralls']);
 
     grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156
