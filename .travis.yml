@@ -12,4 +12,4 @@ before_script:
   - node_modules/protractor/bin/webdriver-manager update --standalone
   - bower install
 script:
-  - grunt travis-test
+  - grunt test-travis
