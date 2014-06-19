@@ -280,6 +280,8 @@ module.exports = function (grunt) {
             options: {
                 src: 'coverage/reports/lcov.info',
                 force: false
+            },
+            main: {
             }
         }
     });
