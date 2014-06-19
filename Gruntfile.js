@@ -272,16 +272,14 @@ module.exports = function (grunt) {
             src: 'coverage/*.json',
             options: {
                 type: 'lcovonly',
-                dir: 'coverage/reports',
+                dir: 'coverage',
                 print: 'detail'
             }
         },
         coveralls: {
-            options: {
-                src: 'coverage/reports/lcov.info',
-                force: false
-            },
             main: {
+                force: false,
+                src: ['coverage/lcov.info']
             }
         }
     });
