@@ -283,8 +283,10 @@ module.exports = function (grunt) {
             }
         },
         coveralls: {
+            options: {
+                force: true
+            },
             main: {
-                force: true,
                 src: ['coverage/**/*.info']
             }
         }

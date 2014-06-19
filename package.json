@@ -35,8 +35,5 @@
         "karma-phantomjs-launcher": "~0.1.4",
         "load-grunt-tasks": "~0.2",
         "protractor": "^0.24.1"
-    },
-    "scripts": {
-        "test": "grunt test-travis"
     }
 }
