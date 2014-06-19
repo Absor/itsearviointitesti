@@ -134,6 +134,15 @@ module.exports = function (grunt) {
                 },
                 src: 'index.html'
             },
+            read_instrumented: {
+                options: {
+                    read: [
+                        {selector: 'script[data-concat!="false"]', attribute: 'src', writeto: 'appjs'},
+                        {selector: 'link[rel="stylesheet"][data-concat!="false"]', attribute: 'href', writeto: 'appcss'}
+                    ]
+                },
+                src: 'instrumented/index.html'
+            },
             update: {
                 options: {
                     remove: ['script[data-remove!="false"]', 'link[data-remove!="false"]'],
@@ -199,12 +208,12 @@ module.exports = function (grunt) {
         },
         karma: {
             options: {
-                frameworks: ['jasmine'],
                 files: [  //this files data is also updated in the watch handler, if updated change there too
                     '<%= dom_munger.data.appjs %>',
                     'bower_components/angular-mocks/angular-mocks.js',
                     createFolderGlobs('*-spec.js')
                 ],
+                frameworks: ['jasmine'],
                 logLevel: 'ERROR',
                 reporters: ['mocha'],
                 autoWatch: false, //watching is handled by grunt-contrib-watch
@@ -217,17 +226,11 @@ module.exports = function (grunt) {
                 browsers: ['PhantomJS']
             },
             coverage: {
-                options: {
-                    frameworks: ['jasmine'],
-                    files: [  //this files data is also updated in the watch handler, if updated change there too
-                        'bower_components/angular-mocks/angular-mocks.js',
-                        createFolderGlobs('*.js')
-                    ],
-                    reporters: ['mocha', 'coverage'],
-                    coverageReporter: {
-                        type : 'html',
-                        dir : 'coverage/'
-                    }
+                reporters: ['mocha', 'coverage'],
+                coverageReporter: {
+                    type : 'lcovonly',
+                    dir : 'coverage/',
+                    print: 'detail'
                 }
             }
         },
@@ -268,7 +271,7 @@ module.exports = function (grunt) {
         makeReport: {
             src: 'coverage/*.json',
             options: {
-                type: 'lcov',
+                type: 'lcovonly',
                 dir: 'coverage/reports',
                 print: 'detail'
             }
