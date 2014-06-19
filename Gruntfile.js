@@ -284,7 +284,7 @@ module.exports = function (grunt) {
         },
         coveralls: {
             main: {
-                force: false,
+                force: true,
                 src: ['coverage/**/*.info']
             }
         }
@@ -295,7 +295,7 @@ module.exports = function (grunt) {
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests']);
     grunt.registerTask('test-local-e2e', ['connect:test', 'protractor_webdriver', 'protractor']);
     grunt.registerTask('test-travis', ['clean:test', 'instrument', 'dom_munger:read_libraries', 'karma:coverage', 'copy:test', 'connect:instrumented', 'protractor_webdriver', 'protractor_coverage', 'makeReport', 'coveralls']);
-
+5
     grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156
 
