@@ -5,6 +5,7 @@ env:
   global:
   - secure: tBkPK9NjGzA8ck16Hjy3oLQCEoDFls3pYqB/r/989zoxfow17DxeZ9zaXjgm/FJitxazQYlJyb52nvbwT2DSNDn7Wud/vPa92mNu6Fjf1792yzYFF+YNyQ7iNRghIw5fgws1On7gx/o1OTfqgioh6/s62OBuXRXZnEexqCwxZmE=
   - secure: gQ+8xHs/46sAQ7ixCwbr4Oydbuhb2t03+OR7nve2ZUGgAe8G8GwhAP51HeDNOMPDNbIRtzgPOtp/XSg/bSN3wf8QDhTzl/EYQ8HxQIGw3QDvQjMpxdD9zBhBkzkhrL7pq+7MD7/e4LfLY+YUvdxGNJrSMGrRONcCaX9qOqmX/LU=
+  - secure: 6Shf3ycaTaRcd4Dq1KJfkhEN8TmK1ukjjGSzwagymw03GmFeG2fQGTjMHWDTx+ER6gZberjtOV8LS9wcptkweVbp0kFV1mYkUlfvC31J/V6XzNxE+dQ0VFBqB4xrq2sw7YLAWfvjAPGK1kAu9A7CiV77x/98X8rDW9z6J1RHoJA=
 before_script:
   - npm install -g grunt-cli
   - npm install -g bower
