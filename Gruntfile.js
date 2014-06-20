@@ -233,10 +233,9 @@ module.exports = function (grunt) {
                     ]
                 },
                 reporters: ['mocha', 'coverage'],
-
                 browsers: ['PhantomJS'],
                 coverageReporter: {
-                    type : 'lcovonly',
+                    type : 'lcov',
                     dir : 'coverage/'
                 }
             }
@@ -278,16 +277,8 @@ module.exports = function (grunt) {
         makeReport: {
             src: 'coverage/*.json',
             options: {
-                type: 'lcovonly',
+                type: 'lcov',
                 dir: 'coverage'
-            }
-        },
-        coveralls: {
-            options: {
-                force: true
-            },
-            main: {
-                src: ['coverage/**/*.info']
             }
         }
     });
@@ -296,7 +287,7 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', ['dom_munger:read', 'jshint', 'connect:main', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests']);
     grunt.registerTask('test-local-e2e', ['connect:test', 'protractor_webdriver', 'protractor']);
-    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'dom_munger:read_libraries', 'karma:coverage', 'copy:test', 'connect:instrumented', 'protractor_webdriver', 'protractor_coverage', 'makeReport', 'coveralls']);
+    grunt.registerTask('test-travis', ['clean:test', 'instrument', 'dom_munger:read_libraries', 'karma:coverage', 'copy:test', 'connect:instrumented', 'protractor_webdriver', 'protractor_coverage', 'makeReport']);
 
     grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156
