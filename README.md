@@ -1,2 +1,3 @@
 [![Build Status](https://travis-ci.org/Absor/itsearviointitesti.svg?branch=master)](https://travis-ci.org/Absor/itsearviointitesti)
 [![Coverage Status](https://coveralls.io/repos/Absor/itsearviointitesti/badge.png?branch=master)](https://coveralls.io/r/Absor/itsearviointitesti?branch=master)
+[![devDependency Status](https://david-dm.org/Absor/itsearviointitesti/dev-status.svg)](https://david-dm.org/Absor/itsearviointitesti#info=devDependencies)

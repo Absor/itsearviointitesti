@@ -28,6 +28,7 @@
         "xit": true,
         "jasmine": true,
         "browser": true,
-        "exports": true
+        "exports": true,
+        "process": true
     }
 }
