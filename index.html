@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="satest">
 <head>
-    <title></title>
+    <title>satest</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <link href="app.less" type="text/css" rel="stylesheet/less">
@@ -32,16 +32,12 @@
 <script src="partial/index/index.js"></script>
 <script src="partial/new/new.js"></script>
 <script src="service/satest.js"></script>
+<script src="partial/show/show.js"></script>
+<script src="partial/show/claimgroup/claimgroup.js"></script>
+<script src="partial/show/result/result.js"></script>
 <!-- Add New Component JS Above -->
 
-<div>
-    <div id="content" class="container">
-        <div class="row">
-            <div ui-view="">
-            </div>
-        </div>
-    </div>
-</div>
+<div ui-view></div>
 
 </body>
 </html>

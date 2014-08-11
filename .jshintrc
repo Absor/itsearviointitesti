@@ -29,6 +29,8 @@
         "jasmine": true,
         "browser": true,
         "exports": true,
-        "process": true
+        "process": true,
+        "by": true,
+        "element": true
     }
 }

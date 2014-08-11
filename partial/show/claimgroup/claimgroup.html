@@ -1,0 +1,27 @@
+<div ng-controller="ClaimgroupCtrl">
+    <ul class="pager">
+        <li class="previous"><a ui-sref="show">&larr; Kuvaukseen</a></li>
+    </ul>
+
+    <ul class="list-group">
+        <li class="list-group-item claim-list-item" ng-repeat="claim in claims" ng-class="{'list-group-item-success': isClaimChosen(claim)}" ng-click="toggleClaimChosen(claim)">
+            {{claim.text}}
+        </li>
+    </ul>
+
+    <ul class="pager">
+        <li class="previous"><a ui-sref="show.claimgroup({claimgroupId: claimgroupId - 1})" ng-hide="isFirstClaimgroup()">&larr; Edellinen</a></li>
+        <li class="next"><a ui-sref="show.claimgroup({claimgroupId: claimgroupId + 1})" ng-hide="isLastClaimgroup()">Seuraava &rarr;</a></li>
+        <li class="next"><a ui-sref="show.result" ng-show="isLastClaimgroup()">Tulkinta &rarr;</a></li>
+    </ul>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-success" ng-style="{'width': getProgress() + '%'}">
+            <span class="sr-only">{{getProgress()}}% completed</span>
+        </div>
+        <div class="progress-bar" ng-style="{'width': getSingleItemProgress() + '%'}">
+            <span class="sr-only">{{getSingleItemProgress()}} currently doing</span>
+        </div>
+    </div>
+</div>
+
