@@ -14,10 +14,10 @@ describe('Index page', function () {
     });
 
     it('should list all tests', function() {
-        var panels = element.all(by.css('.panel'));
-        expect(panels.count()).toEqual(2);
-        expect(panels.first().element(by.tagName('h4')).getText()).toMatch(/.+/);
-        expect(panels.last().element(by.tagName('h4')).getText()).toMatch(/.+/);
+        var testHeaders = element.all(by.tagName('h4'));
+        expect(testHeaders.count()).toEqual(2);
+        expect(testHeaders.first().getText()).toMatch(/.+/);
+        expect(testHeaders.last().getText()).toMatch(/.+/);
     });
 
     it('should go to test page when clicking a test', function() {

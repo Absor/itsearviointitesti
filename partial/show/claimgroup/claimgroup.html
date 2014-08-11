@@ -2,9 +2,8 @@
     <ul class="pager">
         <li class="previous"><a ui-sref="show">&larr; Kuvaukseen</a></li>
     </ul>
-
     <ul class="list-group">
-        <li class="list-group-item claim-list-item" ng-repeat="claim in claims" ng-class="{'list-group-item-success': isClaimChosen(claim)}" ng-click="toggleClaimChosen(claim)">
+        <li class="list-group-item claim-list-item" ng-repeat="claim in getClaimgroup()" ng-class="{'list-group-item-success': isClaimChosen(claim)}" ng-click="toggleClaimChosen(claim)">
             {{claim.text}}
         </li>
     </ul>
