@@ -142,7 +142,7 @@ angular.module('satest').factory('saTest',function($q) {
     };
 
     var fakeTest2 = _.clone(fakeTest1, true);
-    fakeTest2.id = 1;
+    fakeTest2.id = "1";
     var fakeTests = [fakeTest1, fakeTest2];
 
 	var saTest = {

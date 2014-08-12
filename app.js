@@ -1,4 +1,4 @@
-angular.module('satest', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate']);
+angular.module('satest', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'hc.marked']);
 
 angular.module('satest').config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('index', {

@@ -1,4 +1,10 @@
-<div class="col-md-12" ng-controller="ResultCtrl">
+<div ng-controller="ResultCtrl">
+    <div class="panel panel-default" ng-repeat="interpretation in getSortedInterpretations()" ng-show="countEnabled(interpretation.claims) > 0">
+        <div class="panel-body" marked="interpretation.text">
+        </div>
 
-
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="claim in interpretation.claims" ng-show="claim._chosen">{{claim.text}}</li>
+        </ul>
+    </div>
 </div>
