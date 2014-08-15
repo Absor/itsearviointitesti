@@ -32,11 +32,15 @@ angular.module('satest').controller('ClaimgroupCtrl',function($scope, $statePara
         return $scope.claimgroupId === _.size($scope.getClaimgroups()) - 1;
     };
 
-    $scope.getProgress = function() {
+    $scope.getProgressPercentage = function() {
         return ($scope.claimgroupId / (_.size($scope.getClaimgroups()))) * 100;
     };
 
-    $scope.getSingleItemProgress = function() {
+    $scope.getSingleItemProgressPercentage = function() {
         return (1 / (_.size($scope.getClaimgroups()))) * 100;
+    };
+
+    $scope.getProgress = function() {
+        return ($scope.claimgroupId + 1) + "/" + _.size($scope.getClaimgroups());
     };
 });

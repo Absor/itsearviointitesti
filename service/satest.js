@@ -3,10 +3,14 @@ angular.module('satest').factory('saTest',function($q) {
         id: "0",
         title: "Tieteellisen kirjoittamisen itsearviointitesti",
         maxChosenPerGroup: 3,
-        description: "Valitse joka kohdasta 0–3 väitettä, jotka eniten kuvaavat omaa tieteellisen tekstin kirjoittamistasi.",
+        descriptionPageText: "Tämän testin avulla voit arvioida osaamistasi suomenkielisen tieteellisen tekstin kirjoittajana. Testissä on väitteitä seuraavilta kirjoittamisen osa-alueilta:\n\n* Kirjoittaminen mentaalisena toimintana\n* Akateemiset käytänteet ja tekstilajien hallinta\n* Lukeminen ja lähteiden käyttö\n* Kirjoittaminen prosessina\n* Tekstin rakenne ja tyyli\n* Kielelliset seikat\n\nItsearviointitestin tekeminen vie aikaa noin 10 minuuttia. Lopuksi saat valitsemiesi väitteiden pohjalta arvion kirjoittamisesi vahvuuksista ja kehittämiskohteista. Koosteen voit tulostaa tai lähettää omaan sähköpostiisi. Vastauksiasi ei tallenneta.\n\nValitse joka kohdasta 0–3 väitettä, jotka **eniten** kuvaavat omaa tieteellisen tekstin kirjoittamistasi.",
+        testPagesText: "Valitse 0–3 väitettä.",
+        interpretationPageText: "#Itsearviointitestin tulokset\n\nTällä sivulla näkyy, mitä kirjoittamisen osa-alueita painotat valinnoissasi. Tulokset näyttävät ensin vahvuutesi kirjoittajana ja sen jälkeen näet alueet, joissa tarvitset harjoitusta. Lue tuloksesi ja niistä annetut tulkinnat huolellisesti ja hyödynnä niitä tarpeen mukaan.",
         interpretations: [
             {
-                text: "Kirjoittaminen mentaalisena toimintana (esim. ilon tai ahdistuksen aiheet, tuen vaikutus, itsenäisyys, vastuu omasta oppimisesta) On vahvuutesi: Vastauksissasi korostuu kirjoittamisen palkitsevuus. Myönteinen asenne kirjoittamiseen helpottaakin työskentelyä monella tavalla: aloittaminen helpottuu, tekstiä syntyy helposti eri tarkoituksiin ja kirjoitusprossista voi nauttia. Itsevarmuus kirjoittajana auttaa myös uusissa tilanteissa, sillä vaativiinkin kirjoitustehtäviin voi suhtautua luottavaisesti. Tutkimusten mukaan sosiaalinen tuki auttaa kirjoitusprosessissa, ja sen vuoksi kirjoittamisesta kannattaakin tehdä yhteisöllistä. Hienoa, jos olet oivaltanut myös tämän kirjoittamisen ulottuvuuden ja mahdollisuuden kehittyä kirjoittajana koko ajan monipuolisemmaksi ja paremmaksi.",
+                category: "Kirjoittaminen mentaalisena toimintana (esim. ilon tai ahdistuksen aiheet, tuen vaikutus, itsenäisyys, vastuu omasta oppimisesta)",
+                type: "strength",
+                text: "Vastauksissasi korostuu kirjoittamisen palkitsevuus. Myönteinen asenne kirjoittamiseen helpottaakin työskentelyä monella tavalla: aloittaminen helpottuu, tekstiä syntyy helposti eri tarkoituksiin ja kirjoitusprossista voi nauttia. Itsevarmuus kirjoittajana auttaa myös uusissa tilanteissa, sillä vaativiinkin kirjoitustehtäviin voi suhtautua luottavaisesti. Tutkimusten mukaan sosiaalinen tuki auttaa kirjoitusprosessissa, ja sen vuoksi kirjoittamisesta kannattaakin tehdä yhteisöllistä. Hienoa, jos olet oivaltanut myös tämän kirjoittamisen ulottuvuuden ja mahdollisuuden kehittyä kirjoittajana koko ajan monipuolisemmaksi ja paremmaksi.",
                 color: "red",
                 claims: [
                     {"text": "Koen tekeväni mielekästä työtä, kun kirjoitan.", "claimgroupId": 0},
@@ -17,7 +21,9 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Kirjoittaessa sosiaalinen tuki on avuksi.", "claimgroupId": 10}
                 ]
             },{
-                text: "Kirjoittaminen mentaalisena toimintana (esim. ilon tai ahdistuksen aiheet, tuen vaikutus, itsenäisyys, vastuu omasta oppimisesta) Kannattaa harjoitella: Kirjoittaminen on vaativaa kognitiivista toimintaa ja edellyttää myös sosiaalisten ja kielellisten käytänteiden hallitsemista. Ei siis ole mikään ihme, että kirjoittaminen aiheuttaa monelle kirjoittajalle ahdistuksen ja pelon tunteita. Kannattaa pysähtyä miettimään, mitä on näiden ahdistavien tunteiden takana, ja etsiä keinoja, joilla kirjoittaminen muuttuisi helpommaksi ja mukavammaksi.  Laske kirjoittamisen rimaa, etsi sosiaalista tukea ja kannustusta, kokeile vapaan kirjoittamisen tekniikoita ja kirjoita aiheista, jotka kiinnostavat sinua todella. Hyviä vinkkejä kirjoittamisen esteiden voittamiseen löytyy myös kirjoittamisoppaista, ks. esim. Svinhufvud, Kokonaisvaltainen kirjoittaminen.",
+                category: "Kirjoittaminen mentaalisena toimintana (esim. ilon tai ahdistuksen aiheet, tuen vaikutus, itsenäisyys, vastuu omasta oppimisesta)",
+                type: "weakness",
+                text: "Kirjoittaminen on vaativaa kognitiivista toimintaa ja edellyttää myös sosiaalisten ja kielellisten käytänteiden hallitsemista. Ei siis ole mikään ihme, että kirjoittaminen aiheuttaa monelle kirjoittajalle ahdistuksen ja pelon tunteita. Kannattaa pysähtyä miettimään, mitä on näiden ahdistavien tunteiden takana, ja etsiä keinoja, joilla kirjoittaminen muuttuisi helpommaksi ja mukavammaksi.  Laske kirjoittamisen rimaa, etsi sosiaalista tukea ja kannustusta, kokeile vapaan kirjoittamisen tekniikoita ja kirjoita aiheista, jotka kiinnostavat sinua todella. Hyviä vinkkejä kirjoittamisen esteiden voittamiseen löytyy myös kirjoittamisoppaista, ks. esim. Svinhufvud, Kokonaisvaltainen kirjoittaminen.",
                 color: "purple",
                 claims: [
                     {"text": "En luota itseeni kirjoittajana.", "claimgroupId": 1},
@@ -28,7 +34,9 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Täydellisyyteen pyrkiminen vaikeuttaa kirjoittamista, joten yleensä en kirjoita tosissani.", "claimgroupId": 11}
                 ]
             },{
-                text: "Akateemiset käytänteet ja tekstilajien hallinta (esim. vakiintuneet käytänteet, oma teksti osana tiedeyhteisöä ja ammattialaa, lukijan huomiointi) On vahvuutesi: Vastaustesi perusteella olet jo hyvin perillä oman alasi käytänteistä ja tieteellisten tekstilajien ominaispiirteistä. Kirjoittaminen voidaan ymmärtää sosiaalisena toimintana, joka tapahtuu sosiaalisessa kontekstissa, jollaista edustaa esimerkiksi oma ala ja oma oppiaine. Oletkin arvattavasti jo harjoitellut tieteellistä kirjoittamista – taidon oppiminen nimittäin vaatii oman alan monesti hiljaisten käytänteiden omaksumista, mikä ei tapahdu aivan yhtäkkiä. Niinpä jos teet eri alojen opintoja, voi olla, että joudut samalla opettelemaan kokonaan uusia tekstilajeja ja uusia käytänteitä.",
+                category: "Akateemiset käytänteet ja tekstilajien hallinta (esim. vakiintuneet käytänteet, oma teksti osana tiedeyhteisöä ja ammattialaa, lukijan huomiointi)",
+                type: "strength",
+                text: "Vastaustesi perusteella olet jo hyvin perillä oman alasi käytänteistä ja tieteellisten tekstilajien ominaispiirteistä. Kirjoittaminen voidaan ymmärtää sosiaalisena toimintana, joka tapahtuu sosiaalisessa kontekstissa, jollaista edustaa esimerkiksi oma ala ja oma oppiaine. Oletkin arvattavasti jo harjoitellut tieteellistä kirjoittamista – taidon oppiminen nimittäin vaatii oman alan monesti hiljaisten käytänteiden omaksumista, mikä ei tapahdu aivan yhtäkkiä. Niinpä jos teet eri alojen opintoja, voi olla, että joudut samalla opettelemaan kokonaan uusia tekstilajeja ja uusia käytänteitä.",
                 color: "blue",
                 claims: [
                     {"text": "Oman alan kirjoitustyyli on hyvin hallussa.", "claimgroupId": 0},
@@ -39,7 +47,9 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Osaan kirjoittaa erilaisia oman alan tekstilajeja.", "claimgroupId": 10}
                 ]
             },{
-                text: "Akateemiset käytänteet ja tekstilajien hallinta (esim. vakiintuneet käytänteet, oma teksti osana tiedeyhteisöä ja ammattialaa, lukijan huomiointi) Kannattaa harjoitella: Akateemiseen asiantuntijuuteen kuuluu paljon käytänteitä ja tapoja, joista monet oppii vain olemalla osa yhteisöä ja tekemällä asiaankuuluvia tehtäviä, kuten kirjoittamalla oman alan tieteellistä tekstiä. Vastaustesi perusteella et ole vielä kovin varma oman alasi kirjoittaja, ja se johtuu varmasti siitä, että olet vielä uusi alalla. Kirjoittamista voi oppia havainnoimalla, millaisia tekstejä ja millaista sanomisen tapaa alalla suositaan. Kannattaa lukea paljon ja ajatuksella oman alan tekstejä ja lukea huolellisesti myös annetut ohjeet, kuten ohjeet tutkielman rakenteesta ja viittaamisesta. Ennen kaikkea kannattaa olla aktiivinen, sillä asiantuntijaksi kasvaminen on sosiaalista. Älä tee pelkästään kirjatenttejä vaan mene sellaisille kursseille, joilla kirjoitetaan. Anna tekstiäsi luettavaksi opiskelijakollegoille ja oman alasi osaajille.",
+                category: "Akateemiset käytänteet ja tekstilajien hallinta (esim. vakiintuneet käytänteet, oma teksti osana tiedeyhteisöä ja ammattialaa, lukijan huomiointi)",
+                type: "weakness",
+                text: "Akateemiseen asiantuntijuuteen kuuluu paljon käytänteitä ja tapoja, joista monet oppii vain olemalla osa yhteisöä ja tekemällä asiaankuuluvia tehtäviä, kuten kirjoittamalla oman alan tieteellistä tekstiä. Vastaustesi perusteella et ole vielä kovin varma oman alasi kirjoittaja, ja se johtuu varmasti siitä, että olet vielä uusi alalla. Kirjoittamista voi oppia havainnoimalla, millaisia tekstejä ja millaista sanomisen tapaa alalla suositaan. Kannattaa lukea paljon ja ajatuksella oman alan tekstejä ja lukea huolellisesti myös annetut ohjeet, kuten ohjeet tutkielman rakenteesta ja viittaamisesta. Ennen kaikkea kannattaa olla aktiivinen, sillä asiantuntijaksi kasvaminen on sosiaalista. Älä tee pelkästään kirjatenttejä vaan mene sellaisille kursseille, joilla kirjoitetaan. Anna tekstiäsi luettavaksi opiskelijakollegoille ja oman alasi osaajille.",
                 color: "black",
                 claims: [
                     {"text": "Asiatyylisen tekstin kirjoittaminen on vaikeaa, koska tykkään kirjoittaa vapaasti ja elävästi.", "claimgroupId": 1},
@@ -50,7 +60,9 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Lukijan huomiointi on haastavaa, sillä en voi tietää, mitkä asiat ovat lukijalla jo ennestään tiedossa.", "claimgroupId": 11}
                 ]
             },{
-                text: "Lukeminen ja lähteiden käyttö (esim. lähdekriittisyys ja tieteellisyyden arviointi, ydinajatusten löytäminen, viittaustekniikka, plagiointi) On vahvuutesi: Vastauksissasi korostuu lähteidenkäytön hallinta. Sovitat käyttämäsi lähteet osaksi omaa tekstiäsi ja osaat hyödyntää niitä tuottaessasi uutta tietoa. Tieteellisen kirjoittamisen ydintä onkin toisten kirjoittamien tekstien lukeminen, tiedon kriittinen arviointi ja analysointi sekä tekstien ydinajatusten löytäminen. Lisäksi on tärkeää hallita oman alan lähdeviittaustekniikka ja noudattaa sitä. Yhteiset pelisäännöt viittauksissa edistävät tieteellisen tiedon rakentumisen läpinäkyvyyttä ja ohjaavat lukijat käyttämiesi lähteiden äärelle. Lukiessasi ja kirjoittaessasi olet osa tiedeyhteisöä!",
+                category: "Lukeminen ja lähteiden käyttö (esim. lähdekriittisyys ja tieteellisyyden arviointi, ydinajatusten löytäminen, viittaustekniikka, plagiointi)",
+                type: "strength",
+                text: "Vastauksissasi korostuu lähteidenkäytön hallinta. Sovitat käyttämäsi lähteet osaksi omaa tekstiäsi ja osaat hyödyntää niitä tuottaessasi uutta tietoa. Tieteellisen kirjoittamisen ydintä onkin toisten kirjoittamien tekstien lukeminen, tiedon kriittinen arviointi ja analysointi sekä tekstien ydinajatusten löytäminen. Lisäksi on tärkeää hallita oman alan lähdeviittaustekniikka ja noudattaa sitä. Yhteiset pelisäännöt viittauksissa edistävät tieteellisen tiedon rakentumisen läpinäkyvyyttä ja ohjaavat lukijat käyttämiesi lähteiden äärelle. Lukiessasi ja kirjoittaessasi olet osa tiedeyhteisöä!",
                 color: "brown",
                 claims: [
                     {"text": "Osaan hyvin oman alani viittauskäytännöt.", "claimgroupId": 0},
@@ -61,18 +73,22 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Minusta on helppoa kirjoittaa toisten tekstien pohjalta.", "claimgroupId": 10}
                 ]
             },{
-                text: "Lukeminen ja lähteiden käyttö (esim. lähdekriittisyys ja tieteellisyyden arviointi, ydinajatusten löytäminen, viittaustekniikka, plagiointi) Kannattaa harjoitella: Vastauksissasi korostuu lähteidenkäytön harjoittelemisen tarve. Tieteellinen teksti pohjaa aiempiin tutkimuksiin ja keskustelee niiden kanssa, mutta eri aloilla on erilaisia argumentointitapoja. Oman alan tieteellisten artikkelien lukeminen tutustuttaa myös niihin. Kun lukee tekstejä, on hyödyllistä miettiä, miten käsitellyt asiat liittyvät toisiinsa, mitkä ovat oman tekstin kannalta olennaisia asioita ja miten onnistuneesti tekstissä argumentoidaan. Jos oman kirjoittamisen kannalta olennaisen tiedon löytäminen tuntuu vaikealta, lähteiden tulkinnassa kannattaa hyödyntää esimerkiksi erilaisia visuaalisia apukeinoja kuten miellekarttaa. Tieteellisiä artikkeleita voi myös mahdollisuuksien mukaan lukea ja analysoida yhdessä muiden kanssa.  Lukutaitoa ja lähteiden käytön sujuvuutta voi aina kehittää! Tutustu esim. Kielijelppi-sivuston lukemista ja referointia käsitteleviin artikkeleihin: www.kielijelppi.fi",
+                category: "Lukeminen ja lähteiden käyttö (esim. lähdekriittisyys ja tieteellisyyden arviointi, ydinajatusten löytäminen, viittaustekniikka, plagiointi)",
+                type: "weakness",
+                text: "Vastauksissasi korostuu lähteidenkäytön harjoittelemisen tarve. Tieteellinen teksti pohjaa aiempiin tutkimuksiin ja keskustelee niiden kanssa, mutta eri aloilla on erilaisia argumentointitapoja. Oman alan tieteellisten artikkelien lukeminen tutustuttaa myös niihin. Kun lukee tekstejä, on hyödyllistä miettiä, miten käsitellyt asiat liittyvät toisiinsa, mitkä ovat oman tekstin kannalta olennaisia asioita ja miten onnistuneesti tekstissä argumentoidaan. Jos oman kirjoittamisen kannalta olennaisen tiedon löytäminen tuntuu vaikealta, lähteiden tulkinnassa kannattaa hyödyntää esimerkiksi erilaisia visuaalisia apukeinoja kuten miellekarttaa. Tieteellisiä artikkeleita voi myös mahdollisuuksien mukaan lukea ja analysoida yhdessä muiden kanssa.  Lukutaitoa ja lähteiden käytön sujuvuutta voi aina kehittää! Tutustu esim. Kielijelppi-sivuston lukemista ja referointia käsitteleviin artikkeleihin: www.kielijelppi.fi",
                 color: "orange",
                 claims: [
                     {"text": "Kopioinnin ja oman tekstin raja tuntuu vaikealta hahmottaa.", "claimgroupId": 1},
                     {"text": "Olen hidas lukija ja minun on vaikea keskittyä tieteellisten tekstien lukemiseen.", "claimgroupId": 3},
                     {"text": "Osaan viitata hyvin lähteisiin, mutta joskus minun on vaikea yhdistää eri lähteiden tietoja tai vertailla niitä keskenään.", "claimgroupId": 5},
                     {"text": "Lähdekriittisyyttä löytyy, mutta ydinajatusten löytäminen on hankalaa.", "claimgroupId": 7},
-                    {"text": "Tekstin tieteellisyyden arvioinnissa olen vielä epävarma.", "claimgroupId": 9},
+                    {"text": "Tekstien tieteellisyyden arvioinnissa olen vielä epävarma.", "claimgroupId": 9},
                     {"text": "Tieteellisten artikkelien referoiminen on vaikeaa, koska en läheskään aina ymmärrä lukemaani.", "claimgroupId": 11}
                 ]
             },{
-                text: "Kirjoittaminen prosessina (esim. aloittaminen, tekstin tuottaminen, ajanhallinta, viimeistely) On vahvuutesi: Olet selvästi ymmärtänyt tieteellisen kirjoittamisen prosessimaisen luonteen, vaikka et välttämättä aina voisikaan käyttää haluamaasi aikaa kirjoittamisen jokaiseen vaiheeseen. Olet omaksunut tavan työstää tekstiäsi useammassa vaiheessa ja pystyt soveltamaan kirjoittamisprosessin eri vaiheita tarpeen mukaan. Pitkää tekstiä ei voikaan tehdä valmiiksi yhdeltä istumalta. Tiedostat myös palautteen tärkeyden ja osaat tarvittaessa hyödyntää sitä. Palautetta kannattaa oman ohjaajan lisäksi pyytää myös opiskelukaverilta.",
+                category: "Kirjoittaminen prosessina (esim. aloittaminen, tekstin tuottaminen, ajanhallinta, viimeistely)",
+                type: "strength",
+                text: "Olet selvästi ymmärtänyt tieteellisen kirjoittamisen prosessimaisen luonteen, vaikka et välttämättä aina voisikaan käyttää haluamaasi aikaa kirjoittamisen jokaiseen vaiheeseen. Olet omaksunut tavan työstää tekstiäsi useammassa vaiheessa ja pystyt soveltamaan kirjoittamisprosessin eri vaiheita tarpeen mukaan. Pitkää tekstiä ei voikaan tehdä valmiiksi yhdeltä istumalta. Tiedostat myös palautteen tärkeyden ja osaat tarvittaessa hyödyntää sitä. Palautetta kannattaa oman ohjaajan lisäksi pyytää myös opiskelukaverilta.",
                 color: "green",
                 claims: [
                     {"text": "Ajanhallintani on tehokasta ja suoriudun tehtävistä hyvinkin lyhyessä ajassa.", "claimgroupId": 0},
@@ -83,7 +99,9 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Tekstin parantamisen kannalta on keskeistä kirjoittaa, saada palautetta ja sitten taas kirjoittaa.", "claimgroupId": 10}
                 ]
             },{
-                text: "Kirjoittaminen prosessina (esim. aloittaminen, tekstin tuottaminen, ajanhallinta, viimeistely) Kannattaa harjoitella: Vastauksissasi korostuvat kirjoittamisprosessin hallinnan ongelmat. Ajankäyttöä, kirjoittamislukkojen avaamista ja erilaisia työtapoja voi kuitenkin harjoitella monin tavoin: aluksi kannattaa tehdä työsuunnitelma ja pitää siitä kiinni.  Pitkä teksti rakentuu vaihe vaiheelta; sitä muokataan, hiotaan ja kirjoitetaan joitakin kohtia uudelleen. Suuren tekstikokonaisuuden kirjoittaminen kannattaakin jakaa pienempiin osiin. Älä epäröi pyytää palautetta myös keskeneräisestä tekstistä! Kirjoitusprosessiin saat apua esim. Svinhufvudin kirjasta Gradutakuu tai Kielijelppi-sivustolta: http://www.kielijelppi.fi/kirjoitusviestinta.",
+                category: "Kirjoittaminen prosessina (esim. aloittaminen, tekstin tuottaminen, ajanhallinta, viimeistely)",
+                type: "weakness",
+                text: "Vastauksissasi korostuvat kirjoittamisprosessin hallinnan ongelmat. Ajankäyttöä, kirjoittamislukkojen avaamista ja erilaisia työtapoja voi kuitenkin harjoitella monin tavoin: aluksi kannattaa tehdä työsuunnitelma ja pitää siitä kiinni.  Pitkä teksti rakentuu vaihe vaiheelta; sitä muokataan, hiotaan ja kirjoitetaan joitakin kohtia uudelleen. Suuren tekstikokonaisuuden kirjoittaminen kannattaakin jakaa pienempiin osiin. Älä epäröi pyytää palautetta myös keskeneräisestä tekstistä! Kirjoitusprosessiin saat apua esim. Svinhufvudin kirjasta Gradutakuu tai Kielijelppi-sivustolta: http://www.kielijelppi.fi/kirjoitusviestinta.",
                 color: "pink",
                 claims: [
                     {"text": "Kireät aikataulut ahdistavat ja haittaavat kirjoittamista.", "claimgroupId": 1},
@@ -94,7 +112,9 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Saatan alkaa kirjoittaa tehokkaasti, mutta sitten jätän tekstini lojumaan, kunnes minulle tulee liian kiire tehdä se loppuun.", "claimgroupId": 11}
                 ]
             },{
-                text: "Tekstin rakenne ja tyyli (esim. jäsentely, yhtenäisyys ja sidosteisuus, otsikointi, vivahteiden taju ja tyylinmukaisuus, retoriikka) On vahvuutesi: Vastauksiesi perusteella hahmotat hyvin sen, miten teksti rakentuu.  Tiedät, miten ajatukset saa tekstissä lukijalle ymmärrettävään muotoon ja myös, miten pystyt johdattamaan lukijaa tekstisi läpi. Teksti koostuu lauseista, mutta lauseiden suhde toisiinsa ja kokonaisuuteen on myös osoitettava – sekä loogisesti, esimerkiksi argumentoimalla, että tekstuaalisesti. Kirjoittaminen tulee kuitenkin sitä luontevammaksi, mitä enemmän ja mitä erilaisempia tekstejä kirjoitat. Yhdenlaisen tekstin rakenne ja keinot eivät välttämättä sovellukaan toisenlaiseen tekstiin, vaan kirjoittamisen tapaa täytyy muuttaa tilanteen mukaan. Ehkä voisitkin kehittää osaamistasi kokeilemalla erilaisten tekstien kirjoittamista.",
+                category: "Tekstin rakenne ja tyyli (esim. jäsentely, yhtenäisyys ja sidosteisuus, otsikointi, vivahteiden taju ja tyylinmukaisuus, retoriikka)",
+                type: "strength",
+                text: "Vastauksiesi perusteella hahmotat hyvin sen, miten teksti rakentuu.  Tiedät, miten ajatukset saa tekstissä lukijalle ymmärrettävään muotoon ja myös, miten pystyt johdattamaan lukijaa tekstisi läpi. Teksti koostuu lauseista, mutta lauseiden suhde toisiinsa ja kokonaisuuteen on myös osoitettava – sekä loogisesti, esimerkiksi argumentoimalla, että tekstuaalisesti. Kirjoittaminen tulee kuitenkin sitä luontevammaksi, mitä enemmän ja mitä erilaisempia tekstejä kirjoitat. Yhdenlaisen tekstin rakenne ja keinot eivät välttämättä sovellukaan toisenlaiseen tekstiin, vaan kirjoittamisen tapaa täytyy muuttaa tilanteen mukaan. Ehkä voisitkin kehittää osaamistasi kokeilemalla erilaisten tekstien kirjoittamista.",
                 color: "gray",
                 claims: [
                     {"text": "Jäsentelen tekstini yleensä hyvin, mutta muiden palaute on tarpeellista.", "claimgroupId": 0},
@@ -105,7 +125,9 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Jäsentelen tekstini isot kokonaisuudet heti aluksi, minkä jälkeen voin keskittyä jokaiseen kohtaan erikseen vaivatta.", "claimgroupId": 10}
                 ]
             },{
-                text: "Tekstin rakenne ja tyyli (esim. jäsentely, yhtenäisyys ja sidosteisuus, otsikointi, vivahteiden taju ja tyylinmukaisuus, retoriikka) Kannattaa harjoitella: Helppolukuisen ja yhtenäisen tekstin kirjoittaminen on haastava tehtävä, koska kirjoittaessaan joutuu pitämään mielessä paitsi sen, mitä itse tietää, myös sen, mitä lukija tietää tai ei tiedä. Monet tekstin rakenteen ongelmat juontavatkin juurensa siitä, että kirjoittaja ei muista kertoa lukijalle, mitä on tekemässä, ja tekstiä vaivaa sidoskeinojen ja metatekstin eli tekstistä kertovan tekstin puute. Vastaustesi perusteella et ole vielä täysin selvillä siitä, miten omista ajatuksista koostetaan yhtenäinen ja helposti seurattava teksti. Tekstin rakentamisen taito kehittyy kuitenkin vähitellen, ja kun kirjoittaa, oppii varmemmaksi kirjoittajaksi. Tekstin rakenteeseen kannattaa perehtyä myös tietoisesti opettelemalla esimerkiksi jäsennyksen suunnittelemista, kappaleiden rakentamista ja metatekstin käyttö. Vinkkejä kannattaa katsoa alkuun vaikkapa Kirjoittajan ABC-kortista: http://webcgi.oulu.fi/oykk/abc/ tekstinhuolto/tekstin_rakenne/tekstin_kappaleet/",
+                category: "Tekstin rakenne ja tyyli (esim. jäsentely, yhtenäisyys ja sidosteisuus, otsikointi, vivahteiden taju ja tyylinmukaisuus, retoriikka)",
+                type: "weakness",
+                text: "Helppolukuisen ja yhtenäisen tekstin kirjoittaminen on haastava tehtävä, koska kirjoittaessaan joutuu pitämään mielessä paitsi sen, mitä itse tietää, myös sen, mitä lukija tietää tai ei tiedä. Monet tekstin rakenteen ongelmat juontavatkin juurensa siitä, että kirjoittaja ei muista kertoa lukijalle, mitä on tekemässä, ja tekstiä vaivaa sidoskeinojen ja metatekstin eli tekstistä kertovan tekstin puute. Vastaustesi perusteella et ole vielä täysin selvillä siitä, miten omista ajatuksista koostetaan yhtenäinen ja helposti seurattava teksti. Tekstin rakentamisen taito kehittyy kuitenkin vähitellen, ja kun kirjoittaa, oppii varmemmaksi kirjoittajaksi. Tekstin rakenteeseen kannattaa perehtyä myös tietoisesti opettelemalla esimerkiksi jäsennyksen suunnittelemista, kappaleiden rakentamista ja metatekstin käyttö. Vinkkejä kannattaa katsoa alkuun vaikkapa Kirjoittajan ABC-kortista: http://webcgi.oulu.fi/oykk/abc/ tekstinhuolto/tekstin_rakenne/tekstin_kappaleet/",
                 color: "lightblue",
                 claims: [
                     {"text": "Minun on vaikea päättää asioiden käsittelyjärjestys.", "claimgroupId": 1},
@@ -116,7 +138,9 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Olen huono kirjoittamaan loogisessa järjestyksessä.", "claimgroupId": 11}
                 ]
             },{
-                text: "Kielelliset seikat (esim. oikeinkirjoitus, aikamuodot) On vahvuutesi: Vastauksissasi näkyy, että pidät tekstin hyvää kieliasua tärkeänä ja tunnet hallitsevasi oikeinkirjoitusasiat.  Tekstien huolelliseen viimeistelyyn kannattaakin panostaa, sillä myös lukijat arvostavat selkeää kieltä ja kirjoitetun kielen normien hallintaa.  Kirjoittajan asiantuntemukseen kuuluu myös se, että osaa käyttää hakuteoksia ja kielioppaita oman kirjoittamisen tukena. Hienoa, jos hyödynnät tätäkin mahdollisuutta jo riittävästi.",
+                category: "Kielelliset seikat (esim. oikeinkirjoitus, aikamuodot)",
+                type: "strength",
+                text: "Vastauksissasi näkyy, että pidät tekstin hyvää kieliasua tärkeänä ja tunnet hallitsevasi oikeinkirjoitusasiat.  Tekstien huolelliseen viimeistelyyn kannattaakin panostaa, sillä myös lukijat arvostavat selkeää kieltä ja kirjoitetun kielen normien hallintaa.  Kirjoittajan asiantuntemukseen kuuluu myös se, että osaa käyttää hakuteoksia ja kielioppaita oman kirjoittamisen tukena. Hienoa, jos hyödynnät tätäkin mahdollisuutta jo riittävästi.",
                 color: "lightgreen",
                 claims: [
                     {"text": "Suurin osa pilkuistani ja yhdyssanoistani on oikein.", "claimgroupId": 0},
@@ -127,7 +151,9 @@ angular.module('satest').factory('saTest',function($q) {
                     {"text": "Tekstieni lauseet ja virkkeet ovat selkeitä ja ymmärrettäviä.", "claimgroupId": 10}
                 ]
             },{
-                text: "###Kielelliset seikat (esim. oikeinkirjoitus, aikamuodot)\n\n####Kannattaa harjoitella:\n\nVastauksissasi näkyy, että koet oikeinkirjoitusasiat ja tekstin viimeistelyn hankalaksi. Onneksi oikeinkirjoitusasioita voi varsin hyvin opiskella myös itsenäisesti, ja tekstin viimeistelyssä voi hyödyntää kielioppaita. Oma teksti kannattaa myös jättää kirjoittamisen jälkeen hetkeksi lepäämään, koska tauon jälkeen lauserakenteiden mahdolliset epäselvyydet havaitsee helpommin ja muokkaus sujuu paremmin. Tekstit kannattaa myös aina lukea huolellisesti viimeisen kerran läpi, ennen kuin luovuttaa ne eteenpäin. Tutustu esim. Kirjoittajan ABC-korttiin, jonka Kielenhuolto-osio on tarkoitettu pulmallisten kieliasioiden itseopiskeluun ja harjoitteluun: http://webcgi.oulu.fi/oykk/abc/kielenhuolto/ .",
+                category: "Kielelliset seikat (esim. oikeinkirjoitus, aikamuodot)",
+                type: "weakness",
+                text: "Vastauksissasi näkyy, että koet oikeinkirjoitusasiat ja tekstin viimeistelyn hankalaksi. Onneksi oikeinkirjoitusasioita voi varsin hyvin opiskella myös itsenäisesti, ja tekstin viimeistelyssä voi hyödyntää kielioppaita. Oma teksti kannattaa myös jättää kirjoittamisen jälkeen hetkeksi lepäämään, koska tauon jälkeen lauserakenteiden mahdolliset epäselvyydet havaitsee helpommin ja muokkaus sujuu paremmin. Tekstit kannattaa myös aina lukea huolellisesti viimeisen kerran läpi, ennen kuin luovuttaa ne eteenpäin. Tutustu esim. Kirjoittajan ABC-korttiin, jonka Kielenhuolto-osio on tarkoitettu pulmallisten kieliasioiden itseopiskeluun ja harjoitteluun: http://webcgi.oulu.fi/oykk/abc/kielenhuolto/ .",
                 color: "cyan",
                 claims: [
                     {"text": "Aikamuotojen käyttö aiheuttaa joskus epäselvyyttä, kun kirjoitan tieteellistä tekstiä.", "claimgroupId": 1},

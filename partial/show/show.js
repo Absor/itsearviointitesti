@@ -12,9 +12,9 @@ angular.module('satest').controller('ShowCtrl',function($scope, $stateParams, sa
             return null;
         }
         if (!claimGroups) {
-            claimGroups = _.groupBy(_.reduce($scope.saTest.interpretations, function(array, interpretation) {
+            claimGroups = _.toArray(_.groupBy(_.reduce($scope.saTest.interpretations, function(array, interpretation) {
                 return array.concat(interpretation.claims);
-            }, []), 'claimgroupId');
+            }, []), 'claimgroupId'));
         }
         return claimGroups;
     };

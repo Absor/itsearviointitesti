@@ -2,6 +2,8 @@
     <ul class="pager">
         <li class="previous"><a ui-sref="show">Kuvaukseen</a></li>
     </ul>
+    <p class="lead" marked="saTest.testPagesText">
+    </p>
     <ul class="list-group">
         <li class="list-group-item claim-list-item" ng-repeat="claim in getClaimgroup()" ng-class="{'list-group-item-success': isClaimChosen(claim)}" ng-click="toggleClaimChosen(claim)">
             {{claim.text}}
@@ -15,11 +17,11 @@
     </ul>
 
     <div class="progress">
-        <div class="progress-bar progress-bar-success" ng-style="{'width': getProgress() + '%'}">
-            <span class="sr-only">{{getProgress()}}% completed</span>
+        <div class="progress-bar progress-bar-success" ng-style="{'width': getProgressPercentage() + '%'}">
+            <span class="sr-only">{{getProgressPercentage()}} uncompleted</span>
         </div>
-        <div class="progress-bar" ng-style="{'width': getSingleItemProgress() + '%'}">
-            <span class="sr-only">{{getSingleItemProgress()}} currently doing</span>
+        <div class="progress-bar" ng-style="{'width': getSingleItemProgressPercentage() + '%'}">
+            <span>{{getProgress()}}</span>
         </div>
     </div>
 </div>

@@ -1,10 +1,62 @@
 <div ng-controller="ResultCtrl">
-    <div class="panel panel-default" ng-repeat="interpretation in getSortedInterpretations()" ng-show="countEnabled(interpretation.claims) > 0">
-        <div class="panel-body" marked="interpretation.text">
+    <p class="lead" marked="saTest.interpretationPageText">
+
+    <div ng-show="hasStrengths()">
+        <h2>Vahvuutesi</h2>
+
+        <div class="row">
+            <div class="canvas-holder col-xs-12 col-sm-6" pie="getStrengths()"></div>
+            <div class="col-xs-12 col-sm-6">
+                <ul class="list-unstyled">
+                    <li ng-repeat="interpretation in getWeaknesses()">
+                        <div style="height: 10px; width: 10px; margin-top: 5px; margin-right: 10px;" ng-style="{'background-color': interpretation.color}" class="pull-left"></div>{{interpretation.category}}
+                    </li>
+                </ul>
+                <div>
+                    {{interpretation}}
+                </div>
+            </div>
         </div>
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-success">Vastauksesi:</li>
-            <li class="list-group-item" ng-repeat="claim in interpretation.claims" ng-show="claim._chosen">{{claim.text}}</li>
-        </ul>
+
+        <div class="panel panel-success" ng-repeat="interpretation in getStrengths()" ng-show="interpretation._enabledCount > 0">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{interpretation.category}}</h3>
+            </div>
+            <div class="panel-body" marked="interpretation.text">
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Vastauksesi:</li>
+                <li class="list-group-item" ng-repeat="claim in interpretation.claims" ng-show="claim._chosen"><em>{{claim.text}}</em></li>
+            </ul>
+        </div>
+    </div>
+    <div ng-show="hasWeaknesses()">
+        <h2>Kannattaa harjoitella</h2>
+
+        <div class="row">
+            <div class="canvas-holder col-xs-12 col-sm-6" pie="getWeaknesses()"></div>
+            <div class="col-xs-12 col-sm-6">
+                <ul class="list-unstyled">
+                    <li ng-repeat="interpretation in getWeaknesses()">
+                        <div style="height: 10px; width: 10px; margin-top: 5px; margin-right: 10px;" ng-style="{'background-color': interpretation.color}" class="pull-left"></div>{{interpretation.category}}
+                    </li>
+                </ul>
+                <div>
+                    {{interpretation}}
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-success" ng-repeat="interpretation in getWeaknesses()" ng-show="interpretation._enabledCount > 0">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{interpretation.category}}</h3>
+            </div>
+            <div class="panel-body" marked="interpretation.text">
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Vastauksesi:</li>
+                <li class="list-group-item" ng-repeat="claim in interpretation.claims" ng-show="claim._chosen"><em>{{claim.text}}</em></li>
+            </ul>
+        </div>
     </div>
 </div>
