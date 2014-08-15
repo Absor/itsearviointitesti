@@ -54,7 +54,7 @@ angular.module('satest').directive('pie', function ($window) {
 
                 canvas.on('click', function(evt){
                     var activePoints = pieChart.getSegmentsAtEvent(evt);
-                    console.log(activePoints)
+                    console.log(activePoints);
                     // => activePoints is an array of segments on the canvas that are at the same position as the click event.
                 });
 
