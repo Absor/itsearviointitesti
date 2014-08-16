@@ -32,6 +32,6 @@
         "process": true,
         "by": true,
         "element": true,
-        "Chart": true
+        "google": true
     }
 }

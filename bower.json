@@ -23,7 +23,6 @@
     "less.js": "~1.6",
     "font-awesome": "~4.0",
     "marked": "~0.3.2",
-    "angular-marked": "~0.0.12",
-    "chartjs": "1.0.1-beta.3"
+    "angular-marked": "~0.0.12"
   }
 }

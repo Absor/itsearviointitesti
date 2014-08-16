@@ -5,10 +5,7 @@ angular.module('satest').directive('pie', function ($window) {
             data: "=pie"
         },
         link: function (scope, element, attrs) {
-
-            var canvas = angular.element('<canvas>');
-            element.append(canvas);
-            var context = canvas[0].getContext('2d');
+            var chart = new google.visualization.PieChart(element[0]);
 
             angular.element($window).on('resize', function () {
                 scope.$apply();
@@ -31,34 +28,31 @@ angular.module('satest').directive('pie', function ($window) {
                 angular.element($window).off('resize');
             });
 
-
-
-            // define render function
             scope.render = function (data) {
                 if (!data) {
                     return;
                 }
 
-                var dataFormatted = _.reduce(data, function(result, interpretation) {
-                    result.push({
-                        value: interpretation._enabledCount,
-                        color: interpretation.color,
-                        _category: interpretation.category
-                    });
+                // format data for chart
+                var reduced = _.reduce(data, function (result, interpretation) {
+                    result.dataRows.push([
+                        interpretation.category,
+                        interpretation._enabledCount
+                    ]);
+                    result.colors.push(interpretation.color);
                     return result;
-                }, []);
+                }, {dataRows: [], colors: []});
 
-                var pieChart = new Chart(context).Pie(dataFormatted, {
-                    animateRotate : false
-                });
+                // Create the data table.
+                var chartData = new google.visualization.DataTable();
+                chartData.addColumn('string', 'Category');
+                chartData.addColumn('number', 'Answers');
+                chartData.addRows(reduced.dataRows);
 
-                canvas.on('click', function(evt){
-                    var activePoints = pieChart.getSegmentsAtEvent(evt);
-                    console.log(activePoints);
-                    // => activePoints is an array of segments on the canvas that are at the same position as the click event.
-                });
+                // Set chart options
+                var options = {'width': element[0].clientWidth, colors: reduced.colors};
 
-                //TODO remove click listener also
+                chart.draw(chartData, options);
             };
         }
     };

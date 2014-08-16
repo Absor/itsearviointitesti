@@ -4,19 +4,7 @@
     <div ng-show="hasStrengths()">
         <h2>Vahvuutesi</h2>
 
-        <div class="row">
-            <div class="canvas-holder col-xs-12 col-sm-6" pie="getStrengths()"></div>
-            <div class="col-xs-12 col-sm-6">
-                <ul class="list-unstyled">
-                    <li ng-repeat="interpretation in getWeaknesses()">
-                        <div style="height: 10px; width: 10px; margin-top: 5px; margin-right: 10px;" ng-style="{'background-color': interpretation.color}" class="pull-left"></div>{{interpretation.category}}
-                    </li>
-                </ul>
-                <div>
-                    {{interpretation}}
-                </div>
-            </div>
-        </div>
+        <div pie="getStrengths()"></div>
 
         <div class="panel panel-success" ng-repeat="interpretation in getStrengths()" ng-show="interpretation._enabledCount > 0">
             <div class="panel-heading">
@@ -30,22 +18,11 @@
             </ul>
         </div>
     </div>
+
     <div ng-show="hasWeaknesses()">
         <h2>Kannattaa harjoitella</h2>
 
-        <div class="row">
-            <div class="canvas-holder col-xs-12 col-sm-6" pie="getWeaknesses()"></div>
-            <div class="col-xs-12 col-sm-6">
-                <ul class="list-unstyled">
-                    <li ng-repeat="interpretation in getWeaknesses()">
-                        <div style="height: 10px; width: 10px; margin-top: 5px; margin-right: 10px;" ng-style="{'background-color': interpretation.color}" class="pull-left"></div>{{interpretation.category}}
-                    </li>
-                </ul>
-                <div>
-                    {{interpretation}}
-                </div>
-            </div>
-        </div>
+        <div pie="getWeaknesses()"></div>
 
         <div class="panel panel-success" ng-repeat="interpretation in getWeaknesses()" ng-show="interpretation._enabledCount > 0">
             <div class="panel-heading">
