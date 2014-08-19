@@ -50,7 +50,7 @@ angular.module('satest').directive('pie', function ($window) {
                 chartData.addRows(reduced.dataRows);
 
                 // Set chart options
-                var options = {'width': element[0].clientWidth, colors: reduced.colors};
+                var options = {width: element[0].clientWidth, colors: reduced.colors};
 
                 chart.draw(chartData, options);
             };

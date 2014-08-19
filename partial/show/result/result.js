@@ -1,4 +1,4 @@
-angular.module('satest').controller('ResultCtrl',function($scope){
+angular.module('satest').controller('ResultCtrl',function($scope, $window){
 
     var interpretations;
     var getInterpretations = function() {
@@ -47,5 +47,18 @@ angular.module('satest').controller('ResultCtrl',function($scope){
         }, 0);
     };
 
+    $scope.print = function() {
+        $window.print();
+    };
+
+    $scope.sendFeedback = function() {
+
+    };
+
+    $scope.showInterpretation = function(interpretation) {
+        return interpretation._enabledCount >= $scope.saTest.showInterpretationThreshold;
+    };
+
+    // TODO lähetä "tehty"-viesti backendille
     // TODO ei tuloksia -viesti
 });

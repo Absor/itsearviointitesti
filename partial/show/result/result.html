@@ -1,19 +1,23 @@
 <div ng-controller="ResultCtrl">
-    <p class="lead" marked="saTest.interpretationPageText">
+    <button type="button" class="btn btn-default pull-right hidden-print" ng-click="print()" tooltip="Tulosta">
+        <i class="fa fa-print"></i>
+    </button>
+
+    <p class="lead" marked="saTest.interpretationPageText"></p>
 
     <div ng-show="hasStrengths()">
         <h2>Vahvuutesi</h2>
 
         <div pie="getStrengths()"></div>
 
-        <div class="panel panel-success" ng-repeat="interpretation in getStrengths()" ng-show="interpretation._enabledCount > 0">
+        <div class="panel panel-success" ng-repeat="interpretation in getStrengths()" ng-show="showInterpretation(interpretation)">
             <div class="panel-heading">
                 <h3 class="panel-title">{{interpretation.category}}</h3>
             </div>
             <div class="panel-body" marked="interpretation.text">
             </div>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Vastauksesi:</li>
+                <li class="list-group-item list-group-item-success">Valitsemasi väitteet:</li>
                 <li class="list-group-item" ng-repeat="claim in interpretation.claims" ng-show="claim._chosen"><em>{{claim.text}}</em></li>
             </ul>
         </div>
@@ -24,16 +28,37 @@
 
         <div pie="getWeaknesses()"></div>
 
-        <div class="panel panel-success" ng-repeat="interpretation in getWeaknesses()" ng-show="interpretation._enabledCount > 0">
+        <div class="panel panel-success" ng-repeat="interpretation in getWeaknesses()" ng-show="showInterpretation(interpretation)">
             <div class="panel-heading">
                 <h3 class="panel-title">{{interpretation.category}}</h3>
             </div>
             <div class="panel-body" marked="interpretation.text">
             </div>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Vastauksesi:</li>
+                <li class="list-group-item list-group-item-success">Valitsemasi väitteet:</li>
                 <li class="list-group-item" ng-repeat="claim in interpretation.claims" ng-show="claim._chosen"><em>{{claim.text}}</em></li>
             </ul>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-default pull-right hidden-print" ng-click="print()" tooltip="Tulosta">
+        <i class="fa fa-print"></i>
+    </button>
+
+    <div class="row hidden-print">
+        <div class="col-xs-12">
+            <h2>Anna palautetta testistä</h2>
+            <form role="form">
+                <div class="form-group">
+                    <label for="name">?</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="feedbackText">Palaute</label>
+                    <textarea class="form-control" rows="5" id="feedbackText"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default pull-right">Lähetä</button>
+            </form>
         </div>
     </div>
 </div>

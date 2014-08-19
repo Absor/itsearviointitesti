@@ -7,7 +7,11 @@ angular.module('satest').config(function ($stateProvider, $urlRouterProvider) {
     });
     $stateProvider.state('new', {
         url: '/tests/new',
-        templateUrl: 'partial/new/new.html'
+        templateUrl: 'partial/edit/edit.html'
+    });
+    $stateProvider.state('edit', {
+        url: '/tests/edit/:testId',
+        templateUrl: 'partial/edit/edit.html'
     });
     $stateProvider.state('show', {
         url: '/tests/:testId',
