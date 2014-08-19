@@ -1,8 +1,8 @@
-angular.module('satest').factory('authentication', function () {
+angular.module('satest').factory('Authentication', function () {
 
-    var authentication = {
+    var Authentication = {
 
     };
 
-    return authentication;
+    return Authentication;
 });

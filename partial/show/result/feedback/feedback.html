@@ -1,0 +1,19 @@
+<div class="row" ng-controller="FeedbackCtrl">
+    <div class="col-xs-12" style="margin-bottom: 20px;">
+        <div ng-hide="feedbackSent">
+            <h2>Anna palautetta testistä</h2>
+            <form role="form" name="form" novalidate>
+                <div class="form-group">
+                    <label for="name">?</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="feedbackText">Palaute</label>
+                    <textarea class="form-control" rows="5" id="feedbackText" ng-model="feedback.text" required minlength="1"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default pull-right" ng-click="sendFeedback()" ng-disabled="form.$invalid">Lähetä</button>
+            </form>
+        </div>
+        <h2 ng-show="feedbackSent">Palaute lähetetty. Kiitos palautteestasi!</h2>
+    </div>
+</div>

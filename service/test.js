@@ -1,4 +1,4 @@
-angular.module('satest').factory('saTest',function($q) {
+angular.module('satest').factory('Test',function($q) {
     var fakeTest1 = {
         id: "0",
         title: "Tieteellisen kirjoittamisen itsearviointitesti",
@@ -173,13 +173,13 @@ angular.module('satest').factory('saTest',function($q) {
     fakeTest2.id = "1";
     var fakeTests = [fakeTest1, fakeTest2];
 
-	var saTest = {
-        all: function() {
+	var Test = {
+        findAll: function() {
             var deferred = $q.defer();
             deferred.resolve(fakeTests);
             return deferred.promise;
         },
-        find: function(id) {
+        findOne: function(id) {
             var deferred = $q.defer();
             deferred.resolve(_.find(fakeTests, function(test) {
                 return test.id === id;
@@ -188,5 +188,5 @@ angular.module('satest').factory('saTest',function($q) {
         }
     };
 
-	return saTest;
+	return Test;
 });

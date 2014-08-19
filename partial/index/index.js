@@ -1,5 +1,5 @@
-angular.module('satest').controller('IndexCtrl', function ($scope, $state, saTest) {
-    saTest.all()
+angular.module('satest').controller('IndexCtrl', function ($scope, $state, Test) {
+    Test.findAll()
         .then(function (tests) {
             $scope.saTests = tests;
         }, function (reason) {

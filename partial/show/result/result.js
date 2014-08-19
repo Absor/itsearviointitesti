@@ -51,10 +51,6 @@ angular.module('satest').controller('ResultCtrl',function($scope, $window){
         $window.print();
     };
 
-    $scope.sendFeedback = function() {
-
-    };
-
     $scope.showInterpretation = function(interpretation) {
         return interpretation._enabledCount >= $scope.saTest.showInterpretationThreshold;
     };

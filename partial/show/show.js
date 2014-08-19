@@ -1,5 +1,5 @@
-angular.module('satest').controller('ShowCtrl',function($scope, $stateParams, saTest){
-    saTest.find($stateParams.testId)
+angular.module('satest').controller('ShowCtrl',function($scope, $stateParams, Test){
+    Test.findOne($stateParams.testId)
         .then(function (test) {
             $scope.saTest = test;
         }, function (reason) {

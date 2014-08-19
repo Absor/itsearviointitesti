@@ -2,21 +2,21 @@ describe('ShowCtrl', function() {
 
     beforeEach(module('satest'));
 
-    var scope, ctrl, saTestMock, findDeferred, rootScope, stateMock;
+    var scope, ctrl, testMock, findDeferred, rootScope, stateMock;
 
     beforeEach(inject(function ($rootScope, $controller, $q) {
         rootScope = $rootScope;
         findDeferred = $q.defer();
-        var find = jasmine.createSpy('saTest.all function').andReturn(findDeferred.promise);
-        saTestMock = {find: find};
+        var find = jasmine.createSpy('Test.findOne function').andReturn(findDeferred.promise);
+        testMock = {findOne: find};
         stateMock = {};
 
         scope = $rootScope.$new();
-        ctrl = $controller('ShowCtrl', {$scope: scope, saTest: saTestMock, $state: stateMock});
+        ctrl = $controller('ShowCtrl', {$scope: scope, Test: testMock, $state: stateMock});
     }));
 
     it('gets the test from saTest service', function () {
-        expect(saTestMock.find).toHaveBeenCalled();
+        expect(testMock.findOne).toHaveBeenCalled();
         var result = {};
         findDeferred.resolve(result);
         rootScope.$apply();
