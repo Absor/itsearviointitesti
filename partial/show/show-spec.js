@@ -15,11 +15,11 @@ describe('ShowCtrl', function() {
         ctrl = $controller('ShowCtrl', {$scope: scope, Test: testMock, $state: stateMock});
     }));
 
-    it('gets the test from saTest service', function () {
+    it('gets the test from Test service', function () {
         expect(testMock.findOne).toHaveBeenCalled();
         var result = {};
         findDeferred.resolve(result);
         rootScope.$apply();
-        expect(scope.saTest).toBe(result);
+        expect(scope.test).toBe(result);
     });
 });

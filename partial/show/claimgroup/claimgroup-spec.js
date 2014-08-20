@@ -7,11 +7,11 @@ describe('ClaimgroupCtrl', function () {
     beforeEach(inject(function ($rootScope, $controller) {
         scope = $rootScope.$new();
 
-        scope.saTest = {
+        scope.test = {
             maxChosenPerGroup: 1
         };
 
-        ctrl = $controller('ClaimgroupCtrl', {$scope: scope, $stateParams: {claimgroupId: 123}});
+        ctrl = $controller('ClaimgroupCtrl', {$scope: scope, $stateParams: {claimgroupId: 1}});
 
         var claimgroup = [
             {"text": "Koen tekeväni mielekästä työtä, kun kirjoitan."},
@@ -21,13 +21,13 @@ describe('ClaimgroupCtrl', function () {
             {"text": "Osaan hyvin oman alani viittauskäytännöt."},
             {"text": "Suurin osa pilkuistani ja yhdyssanoistani on oikein."}
         ];
-        scope.getClaimgroup = function() {
-            return claimgroup;
+        scope.getClaimgroups = function() {
+            return [claimgroup, claimgroup];
         };
     }));
 
     it('should attach claimgroupId to scope', inject(function () {
-        expect(scope.claimgroupId).toEqual(123);
+        expect(scope.claimgroupId).toEqual(1);
     }));
 
     it('should tell if a claim is chosen', inject(function () {
@@ -81,5 +81,15 @@ describe('ClaimgroupCtrl', function () {
         expect(scope.isLastClaimgroup()).toEqual(true);
     }));
 
-    // TODO progress tests
+    it('should give the done progress percentage', inject(function () {
+        expect(scope.getProgressPercentage()).toEqual(50);
+    }));
+
+    it('should give a single item progress percentage', inject(function () {
+        expect(scope.getSingleItemProgressPercentage()).toEqual(50);
+    }));
+
+    it('should give progress as a string', inject(function () {
+        expect(scope.getProgress()).toEqual("2/2");
+    }));
 });

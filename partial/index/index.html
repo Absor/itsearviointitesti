@@ -8,9 +8,9 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="panel panel-default test-panel" ng-repeat="saTest in saTests" ng-click="goToTest(saTest.id)">
+                <div class="panel panel-default test-panel" ng-repeat="test in tests" ng-click="goToTest(test.id)">
                     <div class="panel-body">
-                        <h4>{{saTest.title}}</h4>
+                        <h4>{{test.title}}</h4>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 angular.module('satest').controller('IndexCtrl', function ($scope, $state, Test) {
     Test.findAll()
         .then(function (tests) {
-            $scope.saTests = tests;
+            $scope.tests = tests;
         }, function (reason) {
             // TODO error
         });

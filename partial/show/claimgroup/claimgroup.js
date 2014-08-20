@@ -16,7 +16,7 @@ angular.module('satest').controller('ClaimgroupCtrl',function($scope, $statePara
                 }
                 return sum;
             }, 0);
-            if (numChosen >= $scope.saTest.maxChosenPerGroup) {
+            if (numChosen >= $scope.test.maxChosenPerGroup) {
                 // TODO error?
                 return;
             }

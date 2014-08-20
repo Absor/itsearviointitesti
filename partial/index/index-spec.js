@@ -15,12 +15,12 @@ describe('IndexCtrl', function () {
         ctrl = $controller('IndexCtrl', {$scope: scope, Test: testMock, $state: stateMock});
     }));
 
-    it('gets all tests from saTest service', function () {
+    it('gets all tests from Test service', function () {
         expect(testMock.findAll).toHaveBeenCalled();
         var result = [];
         allDeferred.resolve(result);
         rootScope.$apply();
-        expect(scope.saTests).toBe(result);
+        expect(scope.tests).toBe(result);
     });
 
     it('calling goToTest calls the $state with right parameters', function() {

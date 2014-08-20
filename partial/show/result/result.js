@@ -2,11 +2,11 @@ angular.module('satest').controller('ResultCtrl',function($scope, $window){
 
     var interpretations;
     var getInterpretations = function() {
-        if (!$scope.saTest) {
+        if (!$scope.test) {
             return [];
         }
         if (!interpretations) {
-            var basicInterpretations = _.clone($scope.saTest.interpretations);
+            var basicInterpretations = _.clone($scope.test.interpretations);
             _.each(basicInterpretations, function(interpretation) {
                 interpretation._enabledCount = countEnabled(interpretation.claims);
             });
@@ -52,7 +52,7 @@ angular.module('satest').controller('ResultCtrl',function($scope, $window){
     };
 
     $scope.showInterpretation = function(interpretation) {
-        return interpretation._enabledCount >= $scope.saTest.showInterpretationThreshold;
+        return interpretation._enabledCount >= $scope.test.showInterpretationThreshold;
     };
 
     // TODO lähetä "tehty"-viesti backendille

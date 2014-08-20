@@ -1,8 +1,17 @@
-angular.module('satest').controller('EditCtrl',function($scope, $stateParams){
+angular.module('satest').controller('EditCtrl',function($scope, $stateParams, Test){
+    $scope.test = {};
+
     $scope.isNew = function() {
-        console.log(!$stateParams.testId);
         return !$stateParams.testId;
     };
+
+    if (!$scope.isNew()) {
+        Test.findOne($stateParams.testId).then(function(test) {
+            $scope.test = test;
+        }, function() {
+            // TODO error redirect
+        });
+    }
 
     var getRandomColor = function() {
         var letters = ['A','B','C','D','E'];

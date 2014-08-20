@@ -2,7 +2,7 @@
     <div class="jumbotron hidden-print">
         <a ui-sref="index" class="home">Pääsivulle</a>
         <div class="container">
-            <h1>{{saTest.title}}</h1>
+            <h1>{{test.title}}</h1>
         </div>
     </div>
 
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <ui-view name="content">
-                    <p class="lead" marked="saTest.descriptionPageText">
+                    <p class="lead" marked="test.descriptionPageText">
                     </p>
                     <ul class="pager">
                         <li class="next"><a ui-sref="show.claimgroup({claimgroupId: 0})">Väitteisiin &rarr;</a></li>
