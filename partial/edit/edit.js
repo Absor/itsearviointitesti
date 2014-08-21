@@ -1,4 +1,4 @@
-angular.module('satest').controller('EditCtrl',function($scope, $stateParams, Test){
+angular.module('satest').controller('EditCtrl',function($scope, $stateParams, $modal, Test){
     $scope.test = {};
 
     $scope.isNew = function() {
@@ -20,5 +20,12 @@ angular.module('satest').controller('EditCtrl',function($scope, $stateParams, Te
             color += letters[Math.floor(Math.random() * letters.length)];
         }
         return color;
+    };
+
+    $scope.openMarkdownHelpModal = function() {
+        $modal.open({
+            templateUrl: 'partial/edit/markdown-modal.html',
+            size: 'lg'
+        });
     };
 });

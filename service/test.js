@@ -2,7 +2,6 @@ angular.module('satest').factory('Test',function($q) {
     var fakeTest1 = {
         id: "0",
         title: "Tieteellisen kirjoittamisen itsearviointitesti",
-        feedbackEmail: "test@test.com",
         maxChosenPerGroup: 3,
         showInterpretationThreshold: 2,
         descriptionPageText: "Tämän testin avulla voit arvioida osaamistasi suomenkielisen tieteellisen tekstin kirjoittajana. Testissä on väitteitä seuraavilta kirjoittamisen osa-alueilta:\n\n* Kirjoittaminen mentaalisena toimintana\n* Akateemiset käytänteet ja tekstilajien hallinta\n* Lukeminen ja lähteiden käyttö\n* Kirjoittaminen prosessina\n* Tekstin rakenne ja tyyli\n* Kielelliset seikat\n\nItsearviointitestin tekeminen vie aikaa noin 10 minuuttia. Lopuksi saat valitsemiesi väitteiden pohjalta arvion kirjoittamisesi vahvuuksista ja kehittämiskohteista. Koosteen voit tulostaa tai lähettää omaan sähköpostiisi. Vastauksiasi ei tallenneta.\n\nValitse joka kohdasta 0–3 väitettä, jotka **eniten** kuvaavat omaa tieteellisen tekstin kirjoittamistasi.",

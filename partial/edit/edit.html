@@ -9,10 +9,33 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <dl class="dl-horizontal">
-                    <dt>Testin nimi</dt>
-                    <dd><span editable-text="test.title">{{test.title}}</span></dd>
-                </dl>
+                <ul class="nav nav-pills" style="margin-bottom: 20px;">
+                    <li class="active"><a href="#">Kuvaussivu</a></li>
+                    <li><a href="#">Väitesivut</a></li>
+                    <li><a href="#">Tulossivu</a></li>
+                    <li><a href="#">Väiteryhmät</a></li>
+                </ul>
+
+                <button class="btn btn-default pull-right" ng-click="openMarkdownHelpModal()"><i class="fa fa-font"></i> Muotoiluohje</button>
+
+                <div>
+                    <h3>Testin kuvausteksti</h3>
+                    <tabset>
+                        <tab heading="Muokkaus">
+                            <div>
+                                <textarea class="form-control" rows="15" ng-model="test.description"></textarea>
+                            </div>
+                        </tab>
+                        <tab heading="Esikatselu">
+                            <div class="panel panel-default">
+                                <div class="panel-body" style="min-height: 300px;">
+                                    <p class="lead" marked="test.description">
+                                    </p>
+                                </div>
+                            </div>
+                        </tab>
+                    </tabset>
+                </div>
             </div>
         </div>
     </div>
