@@ -1,9 +1,9 @@
 angular.module('satest').controller('EditCtrl',function($scope, $stateParams, $modal, $state, Test){
-    var test = {};
+    var test;
 
     $scope.getTest = function() {
         return test;
-    }
+    };
 
     $scope.getCurrentState = function() {
         return  $state.current.name;
@@ -21,18 +21,9 @@ angular.module('satest').controller('EditCtrl',function($scope, $stateParams, $m
         });
     }
 
-    var getRandomColor = function() {
-        var letters = ['A','B','C','D','E'];
-        var color = '#';
-        for (var i=0; i<3; i++ ) {
-            color += letters[Math.floor(Math.random() * letters.length)];
-        }
-        return color;
-    };
-
     $scope.openMarkdownHelpModal = function() {
         $modal.open({
-            templateUrl: 'partial/edit/markdown-modal.html',
+            templateUrl: 'partial/admin/edit/markdown-modal.html',
             size: 'lg'
         });
     };

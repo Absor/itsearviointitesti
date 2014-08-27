@@ -1,0 +1,68 @@
+<div ng-controller="GeneralCtrl">
+    <div class="row">
+        <div class="col-xs-12">
+            <button type="submit" class="btn btn-warning pull-right" ng-show="isEdited()" ng-click="updateTest()"><i class="fa fa-floppy-o"></i> Tallenna</button>
+            <button type="submit" class="btn btn-success pull-right" ng-hide="isEdited()" disabled="disabled">Tallennettu</button>
+        </div>
+    </div>
+
+    <h3>Testin nimi</h3>
+    <input type="text" class="form-control" ng-model="getTestCopy().title">
+
+    <h3>Näytä tulkinta tulossivulla kun väitteitä valittu</h3>
+    <input type="number" class="form-control" ng-model="getTestCopy().showInterpretationThreshold" min="0">
+
+    <h3>Valintoja yhdestä väiteryhmästä enintään</h3>
+    <input type="number" class="form-control" ng-model="getTestCopy().maxChosenPerGroup" min="0">
+
+    <h3>Kuvaussivun teksti</h3>
+    <tabset>
+        <tab heading="Muokkaus">
+            <div>
+                <textarea class="form-control" rows="15" ng-model="getTestCopy().descriptionPageText"></textarea>
+            </div>
+        </tab>
+        <tab heading="Esikatselu">
+            <div class="panel panel-default">
+                <div class="panel-body" style="min-height: 300px;">
+                    <p class="lead" marked="getTestCopy().descriptionPageText">
+                    </p>
+                </div>
+            </div>
+        </tab>
+    </tabset>
+
+    <h3>Väitesivujen aputeksti</h3>
+    <tabset>
+        <tab heading="Muokkaus">
+            <div>
+                <textarea class="form-control" rows="15" ng-model="getTestCopy().testPagesText"></textarea>
+            </div>
+        </tab>
+        <tab heading="Esikatselu">
+            <div class="panel panel-default">
+                <div class="panel-body" style="min-height: 300px;">
+                    <p class="lead" marked="getTestCopy().testPagesText">
+                    </p>
+                </div>
+            </div>
+        </tab>
+    </tabset>
+
+    <h3>Tulossivun teksti</h3>
+    <tabset>
+        <tab heading="Muokkaus">
+            <div>
+                <textarea class="form-control" rows="15" ng-model="getTestCopy().interpretationPageText"></textarea>
+            </div>
+        </tab>
+        <tab heading="Esikatselu">
+            <div class="panel panel-default">
+                <div class="panel-body" style="min-height: 300px;">
+                    <p class="lead" marked="getTestCopy().interpretationPageText">
+                    </p>
+                </div>
+            </div>
+        </tab>
+    </tabset>
+</div>

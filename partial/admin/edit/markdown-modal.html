@@ -1,0 +1,114 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">Tekstin muotoiluohjeet</h4>
+</div>
+<div class="modal-body">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    Muotoilu
+                </th>
+                <th>
+                    Käyttö
+                </th>
+                <th>
+                    Esimerkki
+                </th>
+                <th>
+                    Tulos
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    Otsikko
+                </td>
+                <td>
+                    1-6 x # (#, ##, ### jne.) ja teksti
+                </td>
+                <td>
+                    ### Teksti
+                </td>
+                <td marked="'### Teksti'">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lihavointi
+                </td>
+                <td>
+                    ** kummallakin puolella tekstiä
+                </td>
+                <td>
+                    ** Teksti **
+                </td>
+                <td marked="'** Teksti **'">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Kursivointi
+                </td>
+                <td>
+                    _ (alaviiva) kummallakin puolella tekstiä
+                </td>
+                <td>
+                    _ Teksti _
+                </td>
+                <td marked="'_ Teksti _'">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lista
+                </td>
+                <td>
+                    * Jokaisen rivin (listan jäsen) alussa
+                </td>
+                <td>
+                    * Teksti1<br>
+                    * Teksti2
+                </td>
+                <td marked="'* Teksti1\n* Teksti2'">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Linkki
+                </td>
+                <td>
+                    [Kuvaus](osoite)
+                </td>
+                <td>
+                    [Helsinki.fi](http://www.helsinki.fi)
+                </td>
+                <td marked="'[Helsinki.fi](http://www.helsinki.fi)'">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Kuva
+                </td>
+                <td>
+                    ![Kuvaus](kuvan osoite)
+                </td>
+                <td>
+                    ![Helsinki.fi](http://www.helsinki.fi)
+                </td>
+                <td marked="'![Helsinki.fi](http://www.helsinki.fi)'">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>
+        Tekstin muotoilussa käytetään Markdownia. Lisää osoitteessa <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">http://daringfireball.net/projects/markdown/syntax</a>.
+    </p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="$close()">Sulje</button>
+</div>

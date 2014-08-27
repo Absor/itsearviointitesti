@@ -8,10 +8,29 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="panel panel-default test-panel" ng-repeat="test in tests" ng-click="goToTest(test.id)">
-                    <div class="panel-body">
+                <div class="panel panel-default" ng-repeat="test in tests">
+                    <div class="panel-body test-panel" ng-click="goToTest(test.id)">
                         <h4>{{test.title}}</h4>
                     </div>
+                    <div class="panel-footer" ng-show="isSignedIn()">
+                        <div class="pull-right">
+                            <a class="btn btn-primary btn-sm" ui-sref="edit.general({testId: test.id})">Muokkaa</a>
+                            <button class="btn btn-danger btn-sm" confirm-click="deleteTest(test)">Poista</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div ng-show="isSignedIn()">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="newTest()" ng-show="!isLoadingNew">Uusi testi</button>
+                        <button class="btn btn-primary" disabled="disabled" ng-show="isLoadingNew"><i class="fa fa-spinner fa-spin"></i> Luodaan testiä</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
                 </div>
             </div>
         </div>

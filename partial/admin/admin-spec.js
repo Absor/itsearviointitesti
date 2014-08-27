@@ -1,4 +1,4 @@
-describe('TextsCtrl', function() {
+describe('AdminCtrl', function() {
 
 	beforeEach(module('satest'));
 
@@ -6,7 +6,7 @@ describe('TextsCtrl', function() {
 
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
-      ctrl = $controller('TextsCtrl', {$scope: scope});
+      ctrl = $controller('AdminCtrl', {$scope: scope});
     }));	
 
 	it('should ...', inject(function() {

@@ -1,0 +1,12 @@
+<div ng-controller="AdminCtrl" class="settings">
+    <a ui-sref="signin" ng-hide="isSignedIn()"><i class="fa fa-sign-in"></i></a>
+    <span class="dropdown" ng-show="isSignedIn()">
+        <a href class="dropdown-toggle"><i class="fa fa-cog"></i></a>
+        <ul class="dropdown-menu dropdown-menu-right" style="margin-right: 20px;">
+            <li class="divider"></li>
+            <li>
+              <a href ng-click="signOut()">Kirjaudu ulos</a>
+          </li>
+        </ul>
+    </span>
+</div>

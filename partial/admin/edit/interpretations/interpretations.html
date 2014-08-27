@@ -1,0 +1,76 @@
+<div ng-controller="InterpretationsCtrl">
+    <h3>Tulkinnat</h3>
+    <p ng-show="getTest().interpretations.length === 0">Ei tulkintoja.</p>
+    <accordion>
+        <accordion-group ng-repeat="interpretation in getTest().interpretations">
+            <div ng-controller="SingleInterpretationCtrl">
+                <accordion-heading>
+                    {{getInterpretationCopy().category}}
+                    <span class="pull-right">
+                        <span class="label label-warning" ng-show="isEdited()">Ei tallennettu</span>
+                        <span class="label label-success" ng-hide="isEdited()">Tallennettu</span>
+                        <span class="label label-success" ng-show="getInterpretationCopy().type === 'strength'">{{getInterpretationCopy().type | interpretationType}}</span>
+                        <span class="label label-warning" ng-hide="getInterpretationCopy().type === 'strength'">{{getInterpretationCopy().type | interpretationType}}</span>
+                    </span>
+                    <div class="clearfix"></div>
+                </accordion-heading>
+                <div class="pull-right" style="margin-bottom: 10px;">
+                    <button type="submit" class="btn btn-warning" ng-show="isInterpretationEdited()" ng-click="updateInterpretation()"><i class="fa fa-floppy-o"></i> Tallenna</button>
+                    <button type="submit" class="btn btn-success" ng-hide="isInterpretationEdited()" disabled="disabled">Tallennettu</button>
+                    <button type="button" class="btn btn-danger" confirm-click="deleteInterpretation(interpretation)">Poista tulkinta</button>
+                    <div class="clearfix"></div>
+                </div>
+
+                <h3>Teema-alue</h3>
+                <input type="text" class="form-control" ng-model="getInterpretationCopy().category">
+
+                <h3>Tyyppi</h3>
+                <div class="btn-group">
+                    <label class="btn btn-success" ng-model="getInterpretationCopy().type" btn-radio="'strength'" uncheckable>Vahvuus</label>
+                    <label class="btn btn-warning" ng-model="getInterpretationCopy().type" btn-radio="'weakness'" uncheckable>Kehitysalue</label>
+                </div>
+
+                <h3>Väri</h3>
+                <input type="color" ng-model="getInterpretationCopy().color">
+
+                <h3>Tulkinnan teksti</h3>
+                <tabset>
+                    <tab heading="Muokkaus">
+                        <div>
+                            <textarea class="form-control" rows="15" ng-model="interpretation.text"></textarea>
+                        </div>
+                    </tab>
+                    <tab heading="Esikatselu">
+                        <div class="panel panel-default">
+                            <div class="panel-body" style="min-height: 300px;">
+                                <p marked="interpretation.text">
+                                </p>
+                            </div>
+                        </div>
+                    </tab>
+                </tabset>
+
+                <h3>Väitteet</h3>
+                <p ng-show="interpretation.claims.length === 0">Ei väitteitä.</p>
+                <div class="well" ng-repeat="claim in interpretation.claims">
+                    <div ng-controller="SingleClaimCtrl">
+                        <h4>Väite {{$index+1}}</h4>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="getClaimCopy().text" ng-change="claimChanged()">
+                            </div>
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-warning" ng-show="isClaimEdited()" ng-click="updateClaim()"><i class="fa fa-floppy-o"></i> Tallenna</button>
+                                <button type="submit" class="btn btn-success" ng-hide="isClaimEdited()" disabled="disabled">Tallennettu</button>
+                                <button type="submit" class="btn btn-danger" confirm-click="deleteClaim(interpretation.claims, claim)">Poista</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success pull-right" ng-click="addClaim(interpretation.claims)">Lisää väite</button>
+            </div>
+        </accordion-group>
+    </accordion>
+    <button type="submit" class="btn btn-success pull-right" ng-click="addInterpretation()">Lisää tulkinta</button>
+</div>

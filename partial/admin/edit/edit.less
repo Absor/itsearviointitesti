@@ -22,3 +22,8 @@
   background-color: darken(rgb(223, 240, 216), 10%) !important;
   border-color: darken(rgb(223, 240, 216), 20%) !important;
 }
+
+// responsive table fix for firefox
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}

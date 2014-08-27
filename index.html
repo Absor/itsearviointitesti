@@ -15,9 +15,10 @@
 <script src="bower_components/less.js/dist/less-1.6.2.js" data-concat="false"></script>
 <script src="bower_components/jquery/jquery.js" data-lib="true"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js" data-lib="true"></script>
-<script src="bower_components/underscore/underscore.js" data-lib="true"></script>
+<script src="bower_components/lodash/dist/lodash.compat.js" data-lib="true"></script>
 <script src="bower_components/moment/moment.js" data-lib="true"></script>
 <script src="bower_components/angular/angular.js" data-lib="true"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js" data-lib="true"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js" data-lib="true"></script>
 <script src="bower_components/angular-animate/angular-animate.js" data-lib="true"></script>
 <script src="bower_components/angular-resource/angular-resource.js" data-lib="true"></script>
@@ -25,7 +26,6 @@
 <script src="bower_components/angular-ui-utils/ui-utils.js" data-lib="true"></script>
 <script src="bower_components/marked/lib/marked.js" data-lib="true"></script>
 <script src="bower_components/angular-marked/angular-marked.js" data-lib="true"></script>
-<script src="bower_components/chartjs/Chart.js" data-lib="true"></script>
 <!-- Add New Bower Component JS Above -->
 
 <script src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1","packages":["corechart"]}]}' data-concat="false" data-remove="false"></script>
@@ -39,14 +39,22 @@
 <script src="partial/show/claimgroup/claimgroup.js"></script>
 <script src="partial/show/result/result.js"></script>
 <script src="directive/pie.js"></script>
-<script src="partial/edit/edit.js"></script>
+<script src="partial/admin/edit/edit.js"></script>
 <script src="partial/show/result/feedback/feedback.js"></script>
 <script src="service/feedback.js"></script>
-<script src="partial/edit/texts/texts.js"></script>
-<script src="partial/edit/interpretations/interpretations.js"></script>
-<script src="partial/edit/groups/groups.js"></script>
+<script src="partial/admin/edit/general/general.js"></script>
+<script src="partial/admin/edit/interpretations/interpretations.js"></script>
+<script src="partial/admin/edit/interpretations/single-interpretation.js"></script>
+<script src="partial/admin/edit/interpretations/single-claim.js"></script>
+<script src="partial/admin/edit/groups/groups.js"></script>
+<script src="partial/admin/signin/signin.js"></script>
+<script src="partial/admin/admin.js"></script>
+<script src="directive/confirm-click.js"></script>
+<script src="service/alert.js"></script>
+<script src="filter/interpretation-type.js"></script>
 <!-- Add New Component JS Above -->
 
+<div ng-include="'partial/admin/admin.html'"></div>
 <div ui-view></div>
 
 </body>

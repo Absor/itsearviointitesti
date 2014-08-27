@@ -9,8 +9,7 @@
   ],
   "dependencies": {
     "jquery": "~2.0",
-    "underscore": "~1.5",
-    "bootstrap": "~3.1",
+    "bootstrap": "~3.2",
     "angular": "~1.2",
     "angular-ui-router": "~0.2",
     "angular-animate": "~1.2",
@@ -23,6 +22,7 @@
     "less.js": "~1.6",
     "font-awesome": "~4.0",
     "marked": "~0.3.2",
-    "angular-marked": "~0.0.12"
+    "angular-marked": "~0.0.12",
+    "lodash": "~2.4.1"
   }
 }

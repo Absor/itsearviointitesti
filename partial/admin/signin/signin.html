@@ -1,0 +1,31 @@
+<div ng-controller="SigninCtrl">
+    <div class="jumbotron">
+        <a ui-sref="index" class="home">Pääsivulle</a>
+        <div class="container">
+            <h1>Kirjaudu sisään</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="email">Sähköpostiosoite</label>
+                        <input type="email" class="form-control" id="email" placeholder="Sähköpostiosoite" ng-model="user.username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Salasana</label>
+                        <input type="password" class="form-control" id="password" placeholder="Salasana" ng-model="user.password">
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="signIn()">Kirjaudu</button>
+                </form>
+
+                <div style="margin-top: 20px;">
+                    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
