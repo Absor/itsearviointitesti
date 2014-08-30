@@ -16,7 +16,7 @@
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="user in users">
                         <p class="pull-left" style="margin-top: 7px;">{{user.email}}</p>
-                        <button class="btn btn-danger pull-right" ng-click="deleteUser(user)" ng-hide="user.id === ownId">Poista</button>
+                        <button class="btn btn-danger pull-right" ng-click="deleteUser(user)" ng-hide="user.id == ownId">Poista</button>
                         <div class="clearfix"></div>
                     </li>
                 </ul>

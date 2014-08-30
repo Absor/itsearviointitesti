@@ -62,9 +62,23 @@ angular.module('satest').config(function ($stateProvider, $urlRouterProvider, $h
             }
         }
     });
+
     $stateProvider.state('signin', {
         url: '/signin',
         templateUrl: 'partial/admin/signin/signin.html'
+    });
+    $stateProvider.state('password', {
+        url: '/password',
+        template: '<div ui-view></div>',
+        abstract: true
+    });
+    $stateProvider.state('password.remind', {
+        url: '/remind',
+        templateUrl: 'partial/admin/password/remind/remind.html'
+    });
+    $stateProvider.state('password.reset', {
+        url: '/reset/:token',
+        templateUrl: 'partial/admin/password/reset/reset.html'
     });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/tests');
@@ -114,4 +128,4 @@ angular.module('satest').run(function ($rootScope, $state, Authentication, Alert
     });
 });
 
-angular.module('satest').value('backendUrl', 'http://testit.plotti.fi/api');
+angular.module('satest').value('backendUrl', 'http://localhost:8000/api');

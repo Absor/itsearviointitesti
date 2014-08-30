@@ -1,0 +1,43 @@
+<div ng-controller="ResetCtrl">
+    <div class="jumbotron">
+        <a ui-sref="index" class="home">Pääsivulle</a>
+        <div class="container">
+            <h1>Vaihda salasana</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <form role="form" name="form" novalidate>
+                    <div class="form-group">
+                        <label for="email">Sähköpostiosoite</label>
+                        <input type="email" class="form-control" id="email" placeholder="Sähköpostiosoite" ng-model="user.email" required>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': !passwordsMatch() && user.password_confirmation.length > 0}">
+                        <label for="password">Salasana</label>
+                        <input type="password" class="form-control" id="password" ng-model="user.password" required>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': !passwordsMatch() && user.password_confirmation.length > 0}">
+                        <label for="password_confirmation">Toista salasana</label>
+                        <input type="password" class="form-control" id="password_confirmation" ng-model="user.password_confirmation" required>
+                    </div>
+                    <p>
+                        Salasanan on oltava vähintään 6 merkkiä pitkä.
+                    </p>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-default" ng-click="reset()" ng-disabled="form.$invalid || !passwordsMatch()">Lähetä</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div style="margin-top: 20px;">
+                    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
