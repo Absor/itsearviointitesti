@@ -5,21 +5,15 @@ angular.module('satest').controller('EditCtrl',function($scope, $stateParams, $m
         return test;
     };
 
+    Test.findOne($stateParams.testId).then(function(newTest) {
+        test = newTest;
+    }, function() {
+        // TODO error redirect
+    });
+
     $scope.getCurrentState = function() {
         return  $state.current.name;
     };
-
-    $scope.isNew = function() {
-        return !$stateParams.testId;
-    };
-
-    if (!$scope.isNew()) {
-        Test.findOne($stateParams.testId).then(function(newTest) {
-            test = newTest;
-        }, function() {
-            // TODO error redirect
-        });
-    }
 
     $scope.openMarkdownHelpModal = function() {
         $modal.open({

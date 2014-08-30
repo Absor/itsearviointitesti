@@ -5,20 +5,29 @@ angular.module('satest').config(function ($stateProvider, $urlRouterProvider, $h
     $stateProvider.state('edit', {
         abstract: true,
         url: '/tests/:testId/edit',
-        templateUrl: 'partial/admin/edit/edit.html'
+        templateUrl: 'partial/admin/edit/edit.html',
+        authenticate: true
     });
     $urlRouterProvider.when('/tests/:testId/edit', '/tests/:testId/edit/general');
     $stateProvider.state('edit.general', {
         url: '/general',
-        templateUrl: 'partial/admin/edit/general/general.html'
+        templateUrl: 'partial/admin/edit/general/general.html',
+        authenticate: true
     });
     $stateProvider.state('edit.interpretations', {
         url: '/interpretations',
-        templateUrl: 'partial/admin/edit/interpretations/interpretations.html'
+        templateUrl: 'partial/admin/edit/interpretations/interpretations.html',
+        authenticate: true
     });
-    $stateProvider.state('edit.claimgroups', {
-        url: '/groups',
-        templateUrl: 'partial/admin/edit/groups/groups.html'
+    $stateProvider.state('edit.claims', {
+        url: '/claims',
+        templateUrl: 'partial/admin/edit/claims/claims.html',
+        authenticate: true
+    });
+    $stateProvider.state('user', {
+        url: '/users',
+        templateUrl: 'partial/admin/user/user.html',
+        authenticate: true
     });
     // ALL USERS - no authentication required
     $stateProvider.state('index', {
@@ -45,18 +54,24 @@ angular.module('satest').config(function ($stateProvider, $urlRouterProvider, $h
             }
         }
     });
+    $stateProvider.state('show.result.all', {
+        url: '/all',
+        views: {
+            'content@show': {
+                templateUrl: 'partial/show/result/all/all.html'
+            }
+        }
+    });
     $stateProvider.state('signin', {
         url: '/signin',
         templateUrl: 'partial/admin/signin/signin.html'
     });
-
     /* Add New States Above */
     $urlRouterProvider.otherwise('/tests');
 
     $httpProvider.interceptors.push('authInterceptor');
 });
 
-// TODO authentication checker + auths to views
 angular.module('satest').factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
         // Add authorization token to headers
@@ -74,6 +89,7 @@ angular.module('satest').factory('authInterceptor', function ($rootScope, $q, $c
                 $location.path('/signin');
                 // remove any stale tokens
                 $cookieStore.remove('satest_token');
+                $cookieStore.remove('satest_user');
                 return $q.reject(response);
             }
             else {
@@ -87,6 +103,7 @@ angular.module('satest').run(function ($rootScope, $state, Authentication, Alert
     // Redirect to sign if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
         if (next.authenticate && !Authentication.isSignedIn()) {
+            event.preventDefault();
             $state.go('signin');
         }
     });
@@ -97,4 +114,4 @@ angular.module('satest').run(function ($rootScope, $state, Authentication, Alert
     });
 });
 
-angular.module('satest').value('backendUrl', 'http://api.itsearviointitesti.tassi.fi');
+angular.module('satest').value('backendUrl', 'http://testit.plotti.fi/api');

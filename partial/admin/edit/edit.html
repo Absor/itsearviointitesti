@@ -23,15 +23,10 @@
                         </div>
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" ng-hide="isNew()">
+                            <ul class="nav navbar-nav">
                                 <li ng-class="{active: getCurrentState() === 'edit.general'}"><a ui-sref="edit.general">Tekstit ja muu yleinen</a></li>
-                                <li ng-class="{active: getCurrentState() === 'edit.interpretations'}"><a ui-sref="edit.interpretations">Tulkinnat ja väitteet</a></li>
-                                <li ng-class="{active: getCurrentState() === 'edit.claimgroups'}"><a ui-sref="edit.claimgroups">Väiteryhmät</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav" ng-show="isNew()">
-                                <li ng-class="{active: getCurrentState() === 'new.texts'}"><a ui-sref="new.texts">Kuvaus- ja aputekstit</a></li>
-                                <li ng-class="{active: getCurrentState() === 'new.interpretations'}"><a ui-sref="new.interpretations">Tulkinnat ja väitteet</a></li>
-                                <li ng-class="{active: getCurrentState() === 'new.claimgroups'}"><a ui-sref="new.claimgroups">Väiteryhmät</a></li>
+                                <li ng-class="{active: getCurrentState() === 'edit.interpretations'}"><a ui-sref="edit.interpretations">Tulkinnat</a></li>
+                                <li ng-class="{active: getCurrentState() === 'edit.claims'}"><a ui-sref="edit.claims">Väitteet</a></li>
                             </ul>
                             <form class="navbar-form navbar-right">
                                 <button class="btn btn-link" ng-click="openMarkdownHelpModal()"><i class="fa fa-font"></i> Muotoiluohje</button>

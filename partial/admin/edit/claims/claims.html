@@ -1,0 +1,66 @@
+<div ng-controller="ClaimsCtrl">
+    <h3>Väitteet</h3>
+    <p ng-show="isClaimgroupsEmpty()">Ei väitteitä.</p>
+
+    <div class="row">
+        <div class="col-xs-12" style="margin-bottom: 20px;">
+            <button type="submit" class="btn btn-primary pull-right" ng-click="addClaim()" ng-show="canAddClaim()">Lisää väite</button>
+            <p class="pull-right" ng-hide="canAddClaim()">
+                Lisää tulkinta voidaksesi lisätä väitteitä.
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default" ng-repeat="(groupId, claimgroup) in getClaimgroups()">
+        <div class="panel-heading">
+            <h3 class="panel-title">Väiteryhmä {{groupId}}</h3>
+        </div>
+        <div class="panel-body">
+            <div ng-repeat="claim in claimgroup">
+                <div class="well" style="border: 3px solid;" ng-controller="SingleClaimCtrl" ng-style="{'border-color': findClaimInterpretation(getClaimCopy()).color}">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="row">
+                                <div class="col-xs-12" style="margin-bottom: 5px;">
+                                    <select class="form-control" ng-model="getClaimCopy().interpretation_id" integer ng-style="{'color': findClaimInterpretation(getClaimCopy()).color}">
+                                        <option ng-repeat="interpretation in getTest().interpretations" ng-value="interpretation.id" ng-selected="interpretation.id === getClaimCopy().interpretation_id" ng-style="{'color': interpretation.color}">{{(interpretation.type | interpretationType) + ' - ' + interpretation.category}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-12">
+                                    <input type="text" class="form-control" ng-model="getClaimCopy().text">
+                                </div>
+                            </div>
+                            <div class="visible-xs-block" style="padding-bottom: 10px;"></div>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>Väiteryhmä</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="number" class="form-control" ng-model="getClaimCopy().claimgroupId" min="1" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="row">
+                                <div class="col-xs-12" style="margin-bottom: 5px;">
+                                    <button type="submit" class="btn btn-block btn-warning" ng-if="isEdited()" ng-click="updateClaim()"><i class="fa fa-floppy-o"></i> Tallenna</button>
+                                    <button type="submit" class="btn btn-block btn-success" ng-if="!isEdited()" disabled="disabled">Tallennettu</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button type="submit" class="btn btn-block btn-danger" confirm-click="deleteClaim(claim)">Poista</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

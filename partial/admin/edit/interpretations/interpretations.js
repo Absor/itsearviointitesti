@@ -9,22 +9,8 @@ angular.module('satest').controller('InterpretationsCtrl',function($scope, Test)
         });
     };
 
-    var getRandomColor = function() {
-        var letters = '0123456789ABCDEF'.split('');
-        var color = '#';
-        for (var i=0; i<6; i++ ) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    };
-
     $scope.addInterpretation = function() {
-        Test.Interpretation.create($scope.getTest(), {
-            category: "Teema-alue",
-            type: "strength",
-            text: "",
-            color: getRandomColor()
-        }).then(function(createdInterpretation) {
+        Test.Interpretation.create($scope.getTest()).then(function(createdInterpretation) {
             createdInterpretation.claims = createdInterpretation.claims || [];
             $scope.getTest().interpretations.push(createdInterpretation);
         }, function() {

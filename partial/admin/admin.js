@@ -1,3 +1,6 @@
-angular.module('satest').controller('AdminCtrl',function($scope, Authentication){
-    $scope.signOut = Authentication.signOut;
+angular.module('satest').controller('AdminCtrl',function($scope, $state, Authentication){
+    $scope.signOut = function() {
+        Authentication.signOut();
+        $state.go('index');
+    };
 });

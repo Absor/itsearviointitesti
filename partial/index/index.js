@@ -14,15 +14,7 @@ angular.module('satest').controller('IndexCtrl', function ($scope, $state, Test)
 
     $scope.newTest = function() {
         $scope.isLoadingNew = true;
-        Test.create({
-            title: "",
-            maxChosenPerGroup: 3,
-            showInterpretationThreshold: 0,
-            descriptionPageText: "",
-            testPagesText: "",
-            interpretationPageText: "",
-            interpretations: []
-        }).then(function(test) {
+        Test.create().then(function(test) {
             $scope.isLoadingNew = false;
             $state.go('edit.general', {testId: test.id});
         }, function() {

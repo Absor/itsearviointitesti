@@ -1,12 +1,15 @@
-<div ng-controller="AdminCtrl" class="settings">
+<div ng-controller="AdminCtrl" class="settings hidden-print">
     <a ui-sref="signin" ng-hide="isSignedIn()"><i class="fa fa-sign-in"></i></a>
     <span class="dropdown" ng-show="isSignedIn()">
         <a href class="dropdown-toggle"><i class="fa fa-cog"></i></a>
         <ul class="dropdown-menu dropdown-menu-right" style="margin-right: 20px;">
+            <li>
+                <a ui-sref="user">Käyttäjät</a>
+            </li>
             <li class="divider"></li>
             <li>
               <a href ng-click="signOut()">Kirjaudu ulos</a>
-          </li>
+            </li>
         </ul>
     </span>
 </div>
