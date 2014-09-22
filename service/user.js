@@ -26,7 +26,7 @@ angular.module('satest').factory('User',function($http, $q, backendUrl) {
         },
         destroy: function(user) {
             var deferred = $q.defer();
-            $http.delete(baseUrl + "/" + user.id).
+            $http['delete'](baseUrl + "/" + user.id).
                 success(function(data, status, headers, config) {
                     deferred.resolve(data);
                 }).

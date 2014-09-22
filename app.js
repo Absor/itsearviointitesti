@@ -29,6 +29,11 @@ angular.module('satest').config(function ($stateProvider, $urlRouterProvider, $h
         templateUrl: 'partial/admin/user/user.html',
         authenticate: true
     });
+    $stateProvider.state('completed', {
+        url: '/completed',
+        templateUrl: 'partial/admin/user/user.html',
+        authenticate: true
+    });
     // ALL USERS - no authentication required
     $stateProvider.state('index', {
         url: '/tests',
@@ -128,4 +133,4 @@ angular.module('satest').run(function ($rootScope, $state, Authentication, Alert
     });
 });
 
-angular.module('satest').value('backendUrl', 'http://localhost:8000/api');
+angular.module('satest').value('backendUrl', 'http://testit.plotti.fi/api');

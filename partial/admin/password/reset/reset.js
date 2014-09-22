@@ -7,7 +7,7 @@ angular.module('satest').controller('ResetCtrl',function($scope, $stateParams, A
     };
 
     $scope.passwordsMatch = function() {
-        return $scope.user.password == $scope.user.password_confirmation;
+        return $scope.user.password === $scope.user.password_confirmation;
     };
 
     $scope.reset = function() {
@@ -22,5 +22,5 @@ angular.module('satest').controller('ResetCtrl',function($scope, $stateParams, A
         }, function() {
             $scope.alerts.push({ type: 'warning', msg: 'Virhe. Yritä uudelleen hetken kuluttua.' });
         });
-    }
+    };
 });

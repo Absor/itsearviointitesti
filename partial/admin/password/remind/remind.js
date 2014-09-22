@@ -8,5 +8,5 @@ angular.module('satest').controller('RemindCtrl',function($scope, Authentication
         }, function() {
             $scope.alerts.push({ type: 'warning', msg: 'Virhe. Yritä uudelleen hetken kuluttua.' });
         });
-    }
+    };
 });

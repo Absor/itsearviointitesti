@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="satest">
+<html id="ng-app" ng-app="satest">
 <head>
     <title>Itsearviointitestit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,13 @@
     <link href="app.less" type="text/css" rel="stylesheet/less">
 </head>
 <body>
+<script src="//cdn.rawgit.com/jpillora/xdomain/0.6.15/dist/0.6/xdomain.min.js" slave="http://testit.plotti.fi/proxy.html" data-concat="false" data-remove="false"></script>
+
+<!--[if lt IE 9]>
+<script src="bower_components/html5shiv/dist/html5shiv.js" data-concat="false" data-remove="false"></script>
+<script src="bower_components/es5-shim/es5-shim.js" data-concat="false" data-remove="false"></script>
+<script src="bower_components/json3/lib/json3.min.js" data-concat="false" data-remove="false"></script>
+<![endif]-->
 
 <!-- Livereload script for development only (stripped during dist build) -->
 <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
@@ -26,6 +33,7 @@
 <script src="bower_components/angular-ui-utils/ui-utils.js" data-lib="true"></script>
 <script src="bower_components/marked/lib/marked.js" data-lib="true"></script>
 <script src="bower_components/angular-marked/angular-marked.js" data-lib="true"></script>
+<script src="bower_components/color/one-color.js" data-lib="true"></script>
 <!-- Add New Bower Component JS Above -->
 
 <script src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1","packages":["corechart"]}]}' data-concat="false" data-remove="false"></script>

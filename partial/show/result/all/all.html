@@ -14,35 +14,33 @@
 
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-xs-12">
-            <p class="lead" marked="test.interpretationPageText"></p>
+            <h2>Vahvuudet</h2>
 
-                <h2>Vahvuudet</h2>
-
-                <div class="panel panel-success" ng-repeat="interpretation in getStrengths()">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{interpretation.category}}</h3>
-                    </div>
-                    <div class="panel-body" marked="interpretation.text">
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-success">Väitteet:</li>
-                        <li class="list-group-item" ng-repeat="claim in interpretation.claims"><em>{{claim.text}}</em></li>
-                    </ul>
+            <div class="panel panel-default" ng-repeat="interpretation in getStrengths()">
+                <div class="panel-heading" ng-style="{'background-color': getLightColor(interpretation.color)}">
+                    <h3 class="panel-title">{{interpretation.category}}</h3>
                 </div>
-
-                <h2>Kehitysalueet</h2>
-
-                <div class="panel panel-success" ng-repeat="interpretation in getWeaknesses()">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{interpretation.category}}</h3>
-                    </div>
-                    <div class="panel-body" marked="interpretation.text">
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-success">Väitteet:</li>
-                        <li class="list-group-item" ng-repeat="claim in interpretation.claims"><em>{{claim.text}}</em></li>
-                    </ul>
+                <div class="panel-body" marked="interpretation.text">
                 </div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-style="{'background-color': getLightColor(interpretation.color)}">Väitteet:</li>
+                    <li class="list-group-item" ng-repeat="claim in interpretation.claims"><em>{{claim.text}}</em></li>
+                </ul>
+            </div>
+
+            <h2>Kehitysalueet</h2>
+
+            <div class="panel panel-default" ng-repeat="interpretation in getWeaknesses()">
+                <div class="panel-heading" ng-style="{'background-color': getLightColor(interpretation.color)}">
+                    <h3 class="panel-title">{{interpretation.category}}</h3>
+                </div>
+                <div class="panel-body" marked="interpretation.text">
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-style="{'background-color': getLightColor(interpretation.color)}">Väitteet:</li>
+                    <li class="list-group-item" ng-repeat="claim in interpretation.claims"><em>{{claim.text}}</em></li>
+                </ul>
+            </div>
         </div>
     </div>
 

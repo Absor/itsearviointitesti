@@ -1,4 +1,4 @@
-angular.module('satest').controller('ShowCtrl',function($scope, $stateParams, Test){
+angular.module('satest').controller('ShowCtrl',function($scope, $stateParams, $window, Test){
     Test.findOne($stateParams.testId)
         .then(function (test) {
             $scope.test = test;
@@ -17,5 +17,13 @@ angular.module('satest').controller('ShowCtrl',function($scope, $stateParams, Te
             }, []), 'claimgroupId'));
         }
         return claimGroups;
+    };
+
+    $scope.print = function() {
+        $window.print();
+    };
+
+    $scope.getLightColor = function(hex) {
+        return one.color(hex).lightness(0.9).hex();
     };
 });

@@ -21,14 +21,14 @@
 
                 <div pie="getStrengths()"></div>
 
-                <div class="panel panel-success" ng-repeat="interpretation in getStrengths()" ng-show="showInterpretation(interpretation)">
-                    <div class="panel-heading">
+                <div class="panel panel-default" ng-repeat="interpretation in getStrengths()" ng-show="showInterpretation(interpretation)">
+                    <div class="panel-heading" ng-style="{'background-color': getLightColor(interpretation.color)}">
                         <h3 class="panel-title">{{interpretation.category}}</h3>
                     </div>
                     <div class="panel-body" marked="interpretation.text">
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-success">Valitsemasi väitteet:</li>
+                        <li class="list-group-item" ng-style="{'background-color': getLightColor(interpretation.color)}">Valitsemasi väitteet:</li>
                         <li class="list-group-item" ng-repeat="claim in interpretation.claims" ng-show="claim._chosen"><em>{{claim.text}}</em></li>
                     </ul>
                 </div>
@@ -39,14 +39,14 @@
 
                 <div pie="getWeaknesses()"></div>
 
-                <div class="panel panel-success" ng-repeat="interpretation in getWeaknesses()" ng-show="showInterpretation(interpretation)">
-                    <div class="panel-heading">
+                <div class="panel panel-default" ng-repeat="interpretation in getWeaknesses()" ng-show="showInterpretation(interpretation)">
+                    <div class="panel-heading" ng-style="{'background-color': getLightColor(interpretation.color)}">
                         <h3 class="panel-title">{{interpretation.category}}</h3>
                     </div>
                     <div class="panel-body" marked="interpretation.text">
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-success">Valitsemasi väitteet:</li>
+                        <li class="list-group-item" ng-style="{'background-color': getLightColor(interpretation.color)}">Valitsemasi väitteet:</li>
                         <li class="list-group-item" ng-repeat="claim in interpretation.claims" ng-show="claim._chosen"><em>{{claim.text}}</em></li>
                     </ul>
                 </div>

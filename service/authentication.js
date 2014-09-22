@@ -18,7 +18,7 @@ angular.module('satest').factory('Authentication', function ($rootScope, $q, $ht
         },
         signOut: function() {
             var deferred = $q.defer();
-            $http.delete(authBaseUrl).
+            $http['delete'](authBaseUrl).
                 success(function(data, status, headers, config) {
                     $cookieStore.remove('satest_token');
                     deferred.resolve();

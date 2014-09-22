@@ -1,4 +1,4 @@
-angular.module('satest').controller('AllCtrl',function($scope, $window){
+angular.module('satest').controller('AllCtrl',function($scope){
     var interpretations;
     var getInterpretations = function() {
         if (!$scope.test) {
@@ -17,9 +17,5 @@ angular.module('satest').controller('AllCtrl',function($scope, $window){
 
     $scope.getWeaknesses = function() {
         return getInterpretations()['weakness'];
-    };
-
-    $scope.print = function() {
-        $window.print();
     };
 });

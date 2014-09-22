@@ -79,7 +79,7 @@ angular.module('satest').factory('Test',function($http, $q, backendUrl) {
         },
         destroy: function(test) {
             var deferred = $q.defer();
-            $http.delete(baseUrl + "/" + test.id).
+            $http['delete'](baseUrl + "/" + test.id).
                 success(function(data, status, headers, config) {
                     deferred.resolve(data);
                 }).
@@ -115,7 +115,7 @@ angular.module('satest').factory('Test',function($http, $q, backendUrl) {
         },
         destroy: function(test, interpretation) {
             var deferred = $q.defer();
-            $http.delete(baseUrl + "/" + test.id + "/interpretations/" + interpretation.id).
+            $http['delete'](baseUrl + "/" + test.id + "/interpretations/" + interpretation.id).
                 success(function(data, status, headers, config) {
                     deferred.resolve(data);
                 }).
@@ -151,7 +151,7 @@ angular.module('satest').factory('Test',function($http, $q, backendUrl) {
         },
         destroy: function(test, interpretation, claim) {
             var deferred = $q.defer();
-            $http.delete(baseUrl + "/" + test.id + "/interpretations/" + interpretation.id + "/claims/" + claim.id).
+            $http['delete'](baseUrl + "/" + test.id + "/interpretations/" + interpretation.id + "/claims/" + claim.id).
                 success(function(data, status, headers, config) {
                     deferred.resolve(data);
                 }).

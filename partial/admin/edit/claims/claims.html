@@ -11,9 +11,9 @@
         </div>
     </div>
 
-    <div class="panel panel-default" ng-repeat="(groupId, claimgroup) in getClaimgroups()">
+    <div class="panel panel-default" ng-repeat="claimgroup in getClaimgroups()">
         <div class="panel-heading">
-            <h3 class="panel-title">Väiteryhmä {{groupId}}</h3>
+            <h3 class="panel-title">Väiteryhmä {{claimgroup[0].claimgroupId}}</h3>
         </div>
         <div class="panel-body">
             <div ng-repeat="claim in claimgroup">

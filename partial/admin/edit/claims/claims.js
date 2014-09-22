@@ -19,7 +19,7 @@ angular.module('satest').controller('ClaimsCtrl',function($scope, Test){
         var allClaims = _.reduce($scope.getTest().interpretations, function(array, interpretation) {
             return array.concat(interpretation.claims);
         }, []);
-        claimGroups = _.groupBy(allClaims, 'claimgroupId');
+        claimGroups = _.toArray(_.groupBy(allClaims, 'claimgroupId'));
     };
 
     $scope.addClaim = function() {

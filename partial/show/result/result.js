@@ -1,4 +1,4 @@
-angular.module('satest').controller('ResultCtrl',function($scope, $window){
+angular.module('satest').controller('ResultCtrl',function($scope){
 
     var interpretations;
     var getInterpretations = function() {
@@ -45,10 +45,6 @@ angular.module('satest').controller('ResultCtrl',function($scope, $window){
             }
             return sum;
         }, 0);
-    };
-
-    $scope.print = function() {
-        $window.print();
     };
 
     $scope.showInterpretation = function(interpretation) {

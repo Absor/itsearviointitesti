@@ -32,6 +32,7 @@
         "process": true,
         "by": true,
         "element": true,
-        "google": true
+        "google": true,
+        "one": true
     }
 }

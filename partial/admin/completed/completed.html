@@ -1,0 +1,38 @@
+<div ng-controller="CompletedCtrl">
+    <div class="jumbotron">
+        <a ui-sref="index" class="home">Pääsivulle</a>
+        <div class="container">
+            <h1>Käyttäjät</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div style="margin-top: 20px;">
+                    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="user in users">
+                        <p class="pull-left" style="margin-top: 7px;">{{user.email}}</p>
+                        <button class="btn btn-danger pull-right" ng-click="deleteUser(user)" ng-hide="user.id == ownId">Poista</button>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+
+                <form novalidate name="form">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-md-10">
+                            <input type="email" class="form-control" placeholder="Sähköpostiosoite" ng-model="user.email" required>
+                            <div class="visible-xs-block" style="padding-bottom: 5px;"></div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2">
+                            <button type="submit" class="btn btn-primary btn-block" ng-click="newUser()" ng-disabled="form.$invalid">Uusi käyttäjä</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
